@@ -7,4 +7,5 @@ export DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 unlink ~/.gitconfig
 unlink ~/.bashrc
 unlink ~/.vimrc
+unlink ~/.vim
 
