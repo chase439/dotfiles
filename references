@@ -2,8 +2,6 @@
 # FOR REFERENCES ONLY
 #   Used by the gg bash function
 # ------------------------------
-VAR1="${VAR1:-default_value}" # parameter expansion, set to default_value if it's not set
-yum provides '*/modules/mod_ldap.so'  # find yum packages containing this file
 
 # ------------------------------
 # Rails
@@ -43,6 +41,14 @@ quser # show login time
 # ------------------------------
 alias stopmail='sudo postfix stop'
 alias startmail='sudo postfix start'
+VAR1="${VAR1:-default_value}" # parameter expansion, set to default_value if it's not set
+yum provides '*/modules/mod_ldap.so'  # find yum packages containing this file
+
+The key to autocompletion is the bash command complete
+You can print the rules for vim using:  complete -p vim
+Likewise you can remove these specific rules with: complete -r vim
+Removing the rules resets it to defaults - the usual paths and file names completion
+without any extra logic. This can be used to fix auto-complete issues.
 
 # ------------------------------
 # Git
