@@ -2,6 +2,8 @@
 # FOR REFERENCES ONLY
 #   Used by the gg bash function
 # ------------------------------
+VAR1="${VAR1:-default_value}" # parameter expansion, set to default_value if it's not set
+yum provides '*/modules/mod_ldap.so'  # find yum packages containing this file
 
 # ------------------------------
 # Rails
@@ -26,10 +28,10 @@ rake db:test:prepare  # update test DB with pending migrations
 # MySQL
 # ------------------------------
 
-
 # ------------------------------
 # SSL / Certs
 # ------------------------------
+openssl s_client -connect "domain_name:port" --showcerts  # show certs of site
 
 # ------------------------------
 # Windows commands
@@ -53,3 +55,12 @@ git clean -fd # remove untracked files and directories
 # ------------------------------
 :let " show all variables
 :echo <variable>  # show var value
+
+# ------------------------------
+# LDAP
+# ------------------------------
+ldapsearch -x -W -D $HTTPD_VDE_USER -v -LLL -H "ldaps://domain_name" -b "c=us" "(CN=tran ch*)" -d 5   # -d 5 for debug level 5
+env | grep -i LDAP
+unset LDAPTLS_CERT_LDAPTLS_CACERT # or set LDAPTLS_KEY
+cat /etc/openldap/ldap.conf
+echo $TLS_CACERTDIR
