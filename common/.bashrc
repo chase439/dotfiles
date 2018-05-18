@@ -108,16 +108,22 @@ function exec_cmd() {
   fi
 }
 
+# ------------------------------
+# Database
+# ------------------------------
+mysql_login() { mysql -u root -p$MYSQL_ROOT_PASS $@ ; }
+mysql_stop() { mysqladmin shutdown -u root -p$MYSQL_ROOT_PASS ; }
+mysql_dump_dbs() {  # dump all databases
+  exec_cmd "mysqldump -uroot -p$MYSQL_ROOT_PASS --all-databases > DB_backup.sql"
+}
+# mysql -u root -p$MYSQL_ROOT_PASS dev1_db < $1  # restore a DB
+# mysql_upgrade -u root -p$MYSQL_ROOT_PASS ; # upgrade databases
+
+# ------------------------------
+# VIM
+# ------------------------------
 # replace all tabs with spaces in .erb files
 vim_tab_replace_erb_files() { find . -type f -name "*.erb" | xargs gvim ; } # then ":argo retab | update" in vim
-
-
-# ------------------------------
-# SSL
-# ------------------------------
-cert_expiration() { openssl x509 -noout -dates -in $1 ; }
-cert_verify_against_ca() { openssl verify -CAfile $1 $2 ; }  # cafile, cert_and_key_file
-cert_test_against_server() { openssl s_client -connect localhost:8001 -CAfile $1 $2 ; }  # cafile, cert_and_key_file
 
 ostype=$(uname)
 # if on Windows or X11 is running
@@ -125,6 +131,13 @@ if [ $ostype != "Linux" ] || [ ! -s $DISPLAY ] ; then
   alias gv='mvim'
 fi
 alias gvim='mvim'
+
+# ------------------------------
+# SSL
+# ------------------------------
+cert_expiration() { openssl x509 -noout -dates -in $1 ; }
+cert_verify_against_ca() { openssl verify -CAfile $1 $2 ; }  # cafile, cert_and_key_file
+cert_test_against_server() { openssl s_client -connect localhost:8001 -CAfile $1 $2 ; }  # cafile, cert_and_key_file
 
 # ------------------------------
 # Git
@@ -155,7 +168,7 @@ rcd() { be rails console development ; }
 cuke() { be rake cucumber ; }
 jaz() { be rake jasmine ; }
 tcov() {  be rake spec:rcov ; }
-
+migrated() { be rake db:migrate ; }
 migratedt() { be rake db:migrate db:test:prepare ; }
 
 # ------------------------------
