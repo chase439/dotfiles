@@ -16,12 +16,17 @@ alias l.="ls -d .*" # list hidden files
 alias ll='ls -al'
 alias ltr='ls -ltr'
 tu() { top -u $USER ; }
-alias ip='ifconfig'
+alias ip='ifconfig' # /sbin/ifconfig
 net_open { netstat -tulpn ; } # list open ports
 meminfo() { free -m -l -t ; } # RAM mem info
 psmem() { ps auxf | sort -nr -k 4 ; } # list top processes eating most CPU
 psmem10() { psmem | head -10 ; } # list top 10 processes eating most CPU
 cpuinfo() { less /proc/cpuinfo ; }
+etime_user() { ps -u $USER -o pid,cmd,etime ; } # display elapsed time for all user's processes
+etime_pid() { ps -o pid,cmd,etime -p ; } # prompt for pid, display elapsed time
+countf() { ls -la | grep ^- | wc -l $@; } # count #files in directory
+countd() { ls -la | grep ^d | wc -l $@; } # count #directories in directory
+countl() { ls -la | grep ^l | wc -l $@; } # count #sym_links in directory
 root() { sudo su - root ; }
 
 extract() {
@@ -91,6 +96,7 @@ function exec_cmd() {
 # ------------------------------
 cert_expiration() { openssl x509 -noout -dates -in $1 ; }
 cert_verify_against_ca() { openssl verify -CAfile $1 $2 ; }  # cafile, cert_and_key_file
+cert_test_against_server() { openssl s_client -connect localhost:8001 -CAfile $1 $2 ; }  # cafile, cert_and_key_file
 
 ostype=$(uname)
 # if on Windows or X11 is running
@@ -125,6 +131,10 @@ rcd() { be rails console development ; }
 # be rspec spec
 # alias rspec='rspec --color --format documentation'
 # be rake cucumber:wip
+cuke() { be rake cucumber ; }
+jaz() { be rake jasmine ; }
+tcov() {  be rake spec:rcov ; }
+
 migratedt() { be rake db:migrate db:test:prepare ; }
 
 # ------------------------------
