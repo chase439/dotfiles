@@ -1,0 +1,55 @@
+# ------------------------------
+# FOR REFERENCES ONLY
+#   Used by the gg bash function
+# ------------------------------
+
+# ------------------------------
+# Rails
+# ------------------------------
+# Run rake task from rails console
+require 'rake'
+app.load_tasks
+Rake::Task['task_name'].invoke
+
+binding.remote_pry in code, pry-remote in console
+bundle install ~/gem_install_dir --no-deployment --without development test local
+
+# migrations
+rails generate scaffold ModelName name:string
+rails generate model ModelName name:string  # model & migration
+rails generate migration= ModelName name:string # only migration file
+rake db:migrate:status
+rake db:rollback STEP=2
+rake db:test:prepare  # update test DB with pending migrations
+
+# ------------------------------
+# MySQL
+# ------------------------------
+
+
+# ------------------------------
+# SSL / Certs
+# ------------------------------
+
+# ------------------------------
+# Windows commands
+# ------------------------------
+quser # show login time
+
+# ------------------------------
+# Linux
+# ------------------------------
+alias stopmail='sudo postfix stop'
+alias startmail='sudo postfix start'
+
+# ------------------------------
+# Git
+# ------------------------------
+git config --unset core.autocrlf  # remove a git config
+git clean -fd # remove untracked files and directories
+
+# ------------------------------
+# Vim
+# ------------------------------
+:let " show all variables
+:echo <variable>  # show var value
