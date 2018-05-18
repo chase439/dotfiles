@@ -100,6 +100,16 @@ grep -rl "controller_x" spec/ | xargs sed -i "/controller_x/d"
 # nslookup <IP/DN> # DNS lookup, find IP of load balancer
 
 # ------------------------------
+# PS1 Prompt Format
+# ------------------------------
+## Colors
+# RESET="\[\017\]"
+# NORMAL="\[\033[0m\]"
+# GREEN="\[\033[32m\]"
+# YELLOW="\[\033[33m\]"
+# PS1="${GREEN}\u@\h${NORMAL}:${YELLOW}\w\$(__git_ps2)${NORMAL}\n$ "
+
+# ------------------------------
 # Tools Specific Config
 # ------------------------------
 PAGER=/usr/bin/less
