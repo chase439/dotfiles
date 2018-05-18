@@ -1,0 +1,8 @@
+# set number of lines to scrollback
+defscrollback 3000
+
+# disable C-a s, which freezes the screen, like Ctrl-s in regular terminal, resolve with Ctrl-a q
+bind s
+
+# if you want screen to record command history
+defshell -bash
