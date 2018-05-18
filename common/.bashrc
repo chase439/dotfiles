@@ -123,6 +123,7 @@ be() { bundle exec $@ ; }
 rcd() { be rails console development ; }
 #irb() { ruby -S irb ; } # w/out readline installed; allows backspace & arrow keys to be used
 # be rspec spec
+# alias rspec='rspec --color --format documentation'
 # be rake cucumber:wip
 migratedt() { be rake db:migrate db:test:prepare ; }
 
@@ -147,5 +148,4 @@ alias herokui_bash='herokui run bash'
 # heroku pgbackups:url [b350] #create URL for D/L
 # curl -o stag_20130213.dmp <URL with quotes> #download heroku pgbackup dump from url
 alias import_dump='pg_restore --verbose --clean --no-acl --no-owner -h localhost -U user1 -d appointmentcare_development' #pass in dump file, heroku pgbackups 
-
 
