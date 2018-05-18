@@ -1,6 +1,9 @@
-[user]
+[user]  # could also use GIT_AUTHOR_NAME and GIT_AUTHOR_EMAIL instead
     name = Chase Tran
     email = rapidror@gmail.com
+[core]
+    excludesfile = ~/.gitignore_global
+    autocrlf = true
 [diff]
 [color]
     ui = auto
