@@ -6,4 +6,5 @@ export DOTFILES_PATH="$( cd "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )" &
 
 # Add dotfiles bin to PATH
 export PATH="$PATH:$DOTFILES_PATH/bin"
+source .bash_profile
 
