@@ -14,24 +14,27 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" disable old vi compatibility, enable Vi Improved features
 set nocompatible
 " allow unsaved background buffers and remember marks/undo for them
 set hidden
 " remember more commands and search history
-set history=10000
+set history=100  " keep 100 lines of command line history
+set ruler        " show the cursor position at all time
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set laststatus=2
-set showmatch
-set incsearch
-set hlsearch
+set showmatch  " show matching bracket
+set incsearch  " do incremental searching
+set hlsearch   " highlight search results
+set wrapscan   " wrap around file when searching
+set number     " show line numbers
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
-" highlight current line
-set cursorline
+set cursorline " highlight current line
 set cmdheight=1
 set switchbuf=useopen
 " Always show tab bar at the top
@@ -44,15 +47,23 @@ set shell=bash
 set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
-" Don't make backups at all
-set nobackup
-set nowritebackup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backup  " keep a backup file
+set backupdir=~/.vim-tmp
+set directory=~/.vim-tmp
+if !isdirectory(&directory)
+  call mkdir(&directory, "p")
+endif
+
+let sessiondir=$HOME.'/vs'
+if !isdirectory(&sessiondir)
+  call mkdir(&sessiondir, "p")
+endif
+" whenever you exit or quit vim, auto-create a session file
+autocmd VimLeavePre * mksession! ~/vs/temp
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
+set showcmd  " display incomplete commands
 " Enable highlighting for syntax
 syntax on
 " Enable file type detection.
@@ -103,8 +114,8 @@ augroup vimrcEx
     \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
-  autocmd FileType python set sw=4 sts=4 et
+  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,rake set ai sw=2 sts=2 et
+  autocmd FileType python set sw=2 sts=2 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass
 
@@ -175,7 +186,6 @@ imap jk <Esc>
 noremap   <silent> cc      :s,^\(\s*\)[^# \t]\@=,\1# ,e<CR>:nohls<CR>zvj
 noremap   <silent> cu      :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
    "Hit cc to comment the current line.
-   "Hit cc repeatedly to comment lots of lines.
    "6cc to comment 6 lines.
    "K in visual mode comments the whole selection.
    "Everything can be uncommented in the same way using CTRL-K
@@ -186,7 +196,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-
+" Cycling through buffers
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN SPECIFIC CONFIGS
