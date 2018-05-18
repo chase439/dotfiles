@@ -27,6 +27,11 @@ etime_pid() { ps -o pid,cmd,etime -p ; } # prompt for pid, display elapsed time
 countf() { ls -la | grep ^- | wc -l $@; } # count #files in directory
 countd() { ls -la | grep ^d | wc -l $@; } # count #directories in directory
 countl() { ls -la | grep ^l | wc -l $@; } # count #sym_links in directory
+count_lines_of_code_in_dir() { find $1 -type f -print0 | xargs -0 wc -l ; }  # recursively
+list_files_by_size() { du -S | sort -n -r | more $@ ; } # recursively, order by largest first
+list_dirs_by_size() { du -skh $@ ; } 
+list_drive_sizes() { df -H ; }
+echo_path() { ecoh $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
 root() { sudo su - root ; }
 
 extract() {
@@ -57,6 +62,9 @@ extract() {
   # zip -r myfiles.zip mydir -x *.git*  # exclude .git
 # To decompress:
   # unzip file.zip -d output_dir
+# To list:
+  # jar tvf $@;  # list files inside .jar file
+  tar -ztvf $@;  # list files inside .tar.gz file
 
 pathmunge () {
   # if path is in PATH, then do nothing, else add it to PATH
@@ -73,6 +81,15 @@ pathmunge () {
 }
 
 weather(){ curl -s "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query=${@:-22033}"|perl -ne '/<title>([^<]+)/&&printf "\x1B[0;34m%s\x1B[0m: ",$1;/<fcttext>([^<]+)/&&print $1,"\n"';}
+## remove swapfiles
+# rm_swapfiles() { find app/ db/ -type f -name .\*.sw? | xargs rm ; }
+## nuke given string from all files in a directory
+grep -rl "controller_x" spec/ | xargs sed -i "/controller_x/d"
+
+## IP / host / lookup
+# host <domain_name>  # find IP
+# dig -x <IP>  # find domain name, reverse lookup
+# nslookup <IP/DN> # DNS lookup, find IP of load balancer
 
 # ------------------------------
 # Tools Specific Config
@@ -90,6 +107,10 @@ function exec_cmd() {
     eval $1
   fi
 }
+
+# replace all tabs with spaces in .erb files
+vim_tab_replace_erb_files() { find . -type f -name "*.erb" | xargs gvim ; } # then ":argo retab | update" in vim
+
 
 # ------------------------------
 # SSL
