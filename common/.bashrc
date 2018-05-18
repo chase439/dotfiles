@@ -80,6 +80,14 @@ pathmunge () {
   esac
 }
 
+# print the command before executing it
+function exec_cmd() {
+  if [ $# -eq 1 ] ; then
+    echo $1
+    eval $1
+  fi
+}
+
 weather(){ curl -s "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query=${@:-22033}"|perl -ne '/<title>([^<]+)/&&printf "\x1B[0;34m%s\x1B[0m: ",$1;/<fcttext>([^<]+)/&&print $1,"\n"';}
 ## remove swapfiles
 # rm_swapfiles() { find app/ db/ -type f -name .\*.sw? | xargs rm ; }
@@ -99,14 +107,6 @@ GIT_PAGER='less -r' # wrap long lines when doing git diff
 CUCUMBER_FORMAT='pretty'
 LESS='-isr'
 EDITOR=vim # used by "bundle open <gem_name>" and "git commit"
-
-# print the command before executing it
-function exec_cmd() {
-  if [ $# -eq 1 ] ; then
-    echo $1
-    eval $1
-  fi
-}
 
 # ------------------------------
 # Database
@@ -153,7 +153,7 @@ gg() { (dotfilesdir && git grep $@); }
 git_chmodx() { git update-index --chmod=+x $1 ; }
 git_chmodls() { git ls-tree HEAD $1 ; }
 glola() { git log --graph --decorate --pretty=oneline --abbrev-commit --all ; }
-gb5() { git for-each-ref --count=5 --sort=-committerdate refs ; }  # list 5 most recent commits across all branches
+g5commits() { git for-each-ref --count=5 --sort=-committerdate refs ; }  # list 5 most recent commits across all branches
 # git remote set-url origin <newurl> # change url of git remote
 
 # ------------------------------
