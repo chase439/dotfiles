@@ -4,7 +4,3 @@ if filereadable(file)
   execute 'source '.file
 endif
 
-
-
-
-

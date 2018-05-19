@@ -208,6 +208,8 @@ nnoremap <S-Tab> :bprevious<CR>
 " set wildignore+=*/.git,*/.sn " exclude SCM metadata directories
 
 " CtrlP Plugin
+" more info in ctrlp readme.md
 map ,t <c-p>
 let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
-" more info at ~/.vim/readme.md
+" clear to rescan index, \C run :CtrlPClearCache<Enter>
+map <leader>C :CtrlPClearCache<cr>

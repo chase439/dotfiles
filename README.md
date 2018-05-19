@@ -32,9 +32,12 @@ The `dotfiles` command
 Troubleshooting
 ===================
   - If gitk GUI doesn't show the proper preferences and ~/.gitk exists, delete ~/.config/git/gitk
+  - To run test suite, make sure to first install Bash Automated Testing System (bats). `brew install bats`
+  - To run a single test, e.g., `bats --tap test/bin.bats`
 
 Credits
 ===================
 Thank you to the following:
   - https://github.com/webpro/dotfiles
   - https://github.com/garybernhardt/dotfiles
+  - https://github.com/sstephenson/bats

@@ -75,6 +75,7 @@ Lessons Learned:
   call vs execute
     :call: Call a function.
     :exec: Executes a string as an Ex command. It's similar to eval in javascript.
+  in vimrc, leader is the \ key
 
 # ------------------------------
 # LDAP

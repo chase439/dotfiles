@@ -1,5 +1,6 @@
 # Get current dir knowing this file is a symlink from $HOME
 export DOTFILES_PATH="$( cd "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )" && pwd )"
+export DOTFILES_DIR=$DOTFILES_PATH
 
 # Add dotfiles bin to PATH
 export PATH="$PATH:$DOTFILES_PATH/bin"

@@ -3,6 +3,7 @@
 BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
 SUB_COMMAND_NAME=$2
+DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 sub_clean () {
   brew cleanup
@@ -13,7 +14,7 @@ sub_clean () {
 }
 
 sub_dock () {
-  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
+  . "${DOTFILES_PATH}/macos/dock.sh" && echo "Dock reloaded."
 }
 
 sub_help () {
@@ -31,14 +32,14 @@ sub_help () {
 }
 
 sub_macos () {
-  for DEFAULTS_FILE in "${DOTFILES_DIR}"/macos/defaults*.sh; do
+  for DEFAULTS_FILE in "${DOTFILES_PATH}"/macos/defaults*.sh; do
     echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
   done
   echo "Done. Some changes may require a logout/restart to take effect."
 }
 
 sub_test () {
-  bats "$DOTFILES_DIR"/test/*.bats
+  bats "$DOTFILES_PATH"/test/*.bats
 }
 
 sub_update () {
@@ -52,8 +53,6 @@ sub_update () {
 }
 
 sub_install() {
-  # Get current dir
-  DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
   # force creation of symlinks in $HOME regardless
   # of file existent, overwrite if needed
