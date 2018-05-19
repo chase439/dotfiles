@@ -1,6 +1,3 @@
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-
 # Get current dir knowing this file is a symlink from $HOME
 export DOTFILES_PATH="$( cd "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )" && pwd )"
 
@@ -14,22 +11,21 @@ files=()
 files+=("$HOME/.bashrc_developer") # PORT numbers
 files+=("$HOME/.bashrc_secrets") # credentials, keys
 files+=("common/.bashrc")
-files+=(".bash_profile")
 
-# C2S vs Private Network
-files+=("common/.bashrc_c2s")
+## C2S vs Private Network
+# files+=("common/.bashrc_c2s")
 
-# Project specific
+## Project specific
 files+=("projects_specific/.bashrc_ac")
 
-# RVM, load into shell as a function
+## RVM, load into shell as a function
 files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")
 
-# Iterate through files; if file exists, then source it
+## Iterate through files; if file exists, then source it
 for file in "${files[@]}"
 do
   [[ -s $file ]] && . $file
 done
 
-# print file list
 print_files() { printf '%s\n' "${files[@]}" ; }
+cddotfiles() { cd $DOTFILES_PATH ; }

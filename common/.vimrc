@@ -54,12 +54,12 @@ if !isdirectory(&directory)
   call mkdir(&directory, "p")
 endif
 
-let sessiondir=$HOME.'/vs'
-if !isdirectory(&sessiondir)
-  call mkdir(&sessiondir, "p")
+let g:sessiondir="~/vs"
+if !isdirectory(sessiondir)
+  call mkdir(sessiondir, "p")
 endif
 " whenever you exit or quit vim, auto-create a session file
-autocmd VimLeavePre * mksession! ~/vs/temp
+autocmd VimLeavePre * mksession! sessiondir.'/temp'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -114,16 +114,13 @@ augroup vimrcEx
     \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,rake set ai sw=2 sts=2 et
+  autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber,rake set ai sw=2 sts=2 et
   autocmd FileType python set sw=2 sts=2 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass
 
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
   autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-
-  " Indent p tags
-  " autocmd FileType html,eruby if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 
   " Don't syntax highlight markdown because it's often wrong
   autocmd! FileType mkd setlocal syn=off
@@ -136,16 +133,15 @@ augroup vimrcEx
   " *.md is markdown
   autocmd! BufNewFile,BufRead *.md setlocal ft=
 
-  " indent slim two spaces, not four
+  " indent slim two spaces
   autocmd! FileType slim set sw=2 sts=2 et
 
   " javascript
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
 
-  " Expand tabs in Go. Was gofmt raised in a barn?!
+  " Expand tabs in Go
   autocmd! FileType go set sw=4 sts=4 expandtab | retab
 augroup END
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -174,7 +170,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS

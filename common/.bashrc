@@ -11,13 +11,13 @@ export HISTFILE=~/.bash_unlimited_history
 # Linux
 # ------------------------------
 alias h='history'
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto' # bad on Darwin
 alias l.="ls -d .*" # list hidden files
 alias ll='ls -al'
 alias ltr='ls -ltr'
 tu() { top -u $USER ; }
 alias ip='ifconfig' # /sbin/ifconfig
-net_open { netstat -tulpn ; } # list open ports
+net_open() { netstat -tulpn ; } # list open ports
 meminfo() { free -m -l -t ; } # RAM mem info
 psmem() { ps auxf | sort -nr -k 4 ; } # list top processes eating most CPU
 psmem10() { psmem | head -10 ; } # list top 10 processes eating most CPU
@@ -64,7 +64,7 @@ extract() {
   # unzip file.zip -d output_dir
 # To list:
   # jar tvf $@;  # list files inside .jar file
-  tar -ztvf $@;  # list files inside .tar.gz file
+  # tar -ztvf $@;  # list files inside .tar.gz file
 
 pathmunge () {
   # if path is in PATH, then do nothing, else add it to PATH
@@ -89,10 +89,11 @@ function exec_cmd() {
 }
 
 weather(){ curl -s "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query=${@:-22033}"|perl -ne '/<title>([^<]+)/&&printf "\x1B[0;34m%s\x1B[0m: ",$1;/<fcttext>([^<]+)/&&print $1,"\n"';}
+
 ## remove swapfiles
 # rm_swapfiles() { find app/ db/ -type f -name .\*.sw? | xargs rm ; }
 ## nuke given string from all files in a directory
-grep -rl "controller_x" spec/ | xargs sed -i "/controller_x/d"
+# grep -rl "controller_x" spec/ | xargs sed -i "/controller_x/d"
 
 ## IP / host / lookup
 # host <domain_name>  # find IP
@@ -135,12 +136,13 @@ mysql_dump_dbs() {  # dump all databases
 # replace all tabs with spaces in .erb files
 vim_tab_replace_erb_files() { find . -type f -name "*.erb" | xargs gvim ; } # then ":argo retab | update" in vim
 
-ostype=$(uname)
-# if on Windows or X11 is running
-if [ $ostype != "Linux" ] || [ ! -s $DISPLAY ] ; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
   alias gv='mvim'
+elif [[ ! -s $DISPLAY ]] ; then  # X11 is running
+  alias gv='gvim'
+else
+  alias gv='gvim'
 fi
-alias gvim='mvim'
 
 # ------------------------------
 # SSL
@@ -159,7 +161,7 @@ alias gp='git remote prune origin'
 alias gmnff='git merge --no-ff'
 alias gd='git diff'
 alias gl='git log -n 4'
-gg() { (dotfilesdir && git grep $@); }
+gg() { cddotfiles && git grep $@ ; }
 git_chmodx() { git update-index --chmod=+x $1 ; }
 git_chmodls() { git ls-tree HEAD $1 ; }
 glola() { git log --graph --decorate --pretty=oneline --abbrev-commit --all ; }
