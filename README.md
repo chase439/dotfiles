@@ -29,6 +29,10 @@ The `dotfiles` command
        install          Install sym links to $HOME
        uninstall        Uninstall sym links from $HOME
 
+Files / Directories
+===================
+  - runcom directory is for rc files, e.g., .bashrc, .vimrc. RC part stands for "runcom" which expands to "run commands", commands that its software run.
+
 Troubleshooting
 ===================
   - If gitk GUI doesn't show the proper preferences and ~/.gitk exists, delete ~/.config/git/gitk

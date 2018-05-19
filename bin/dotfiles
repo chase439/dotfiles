@@ -56,11 +56,11 @@ sub_install() {
 
   # force creation of symlinks in $HOME regardless
   # of file existent, overwrite if needed
-  ln -sfv $DOTFILES_PATH/.bash_profile ~
-  ln -sfv $DOTFILES_PATH/.bashrc ~
-  ln -sfv $DOTFILES_PATH/.gitconfig ~
-  ln -sfv $DOTFILES_PATH/.screenrc ~
-  ln -sfv $DOTFILES_PATH/.vimrc ~
+  ln -sfv $DOTFILES_PATH/runcom/.bash_profile ~
+  ln -sfv $DOTFILES_PATH/runcom/.bashrc ~
+  ln -sfv $DOTFILES_PATH/runcom/.gitconfig ~
+  ln -sfv $DOTFILES_PATH/runcom/.screenrc ~
+  ln -sfv $DOTFILES_PATH/runcom/.vimrc ~
   ln -sfv $DOTFILES_PATH/.vim ~
 }
 
