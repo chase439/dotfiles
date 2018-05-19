@@ -4,44 +4,30 @@ BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
 SUB_COMMAND_NAME=$2
 
-sub_help () {
-  echo "Usage: $BIN_NAME <command>"
-  echo
-  echo "Commands:"
-  echo "   clean            Clean up caches (brew, npm, gem, rvm)"
-  echo "   dock             Apply macOS Dock settings"
-  echo "   edit             Open dotfiles in IDE ($DOTFILES_IDE) and Git GUI ($DOTFILES_GIT_GUI)"
-  echo "   help             This help message"
-  echo "   macos            Apply macOS system defaults"
-  echo "   test             Run tests"
-  echo "   update           Update packages and pkg managers (OS, brew, npm, gem)"
-}
-
-sub_edit () {
-  sh -c "$DOTFILES_IDE $DOTFILES_DIR"
-  sh -c "$DOTFILES_GIT_GUI $DOTFILES_DIR"
-}
-
-sub_test () {
-  bats "$DOTFILES_DIR"/test/*.bats
-}
-
-sub_update () {
-  sudo softwareupdate -i -a
-  brew update
-  brew upgrade
-  npm install npm -g
-  npm update -g
-  gem update --system
-  gem update
-}
-
 sub_clean () {
   brew cleanup
   brew cask cleanup
   npm cache clean
   gem cleanup
   rvm cleanup all
+}
+
+sub_dock () {
+  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
+}
+
+sub_help () {
+  echo "Usage: $BIN_NAME <command>"
+  echo
+  echo "Commands:"
+  echo "   clean            Clean up caches (brew, npm, gem, rvm)"
+  echo "   dock             Apply macOS Dock settings"
+  echo "   help             This help message"
+  echo "   macos            Apply MacOS system defaults"
+  echo "   test             Run tests"
+  echo "   update           Run MacOS softwareupdate"
+  echo "   install          Install sym links to $HOME"
+  echo "   uninstall        Uninstall sym links from $HOME"
 }
 
 sub_macos () {
@@ -51,8 +37,42 @@ sub_macos () {
   echo "Done. Some changes may require a logout/restart to take effect."
 }
 
-sub_dock () {
-  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
+sub_test () {
+  bats "$DOTFILES_DIR"/test/*.bats
+}
+
+sub_update () {
+  sudo softwareupdate -i -a
+  # brew update
+  # brew upgrade
+  # npm install npm -g
+  # npm update -g
+  # gem update --system
+  # gem update
+}
+
+sub_install() {
+  # Get current dir
+  DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+  # force creation of symlinks in $HOME regardless
+  # of file existent, overwrite if needed
+  ln -sfv $DOTFILES_PATH/.bash_profile ~
+  ln -sfv $DOTFILES_PATH/.bashrc ~
+  ln -sfv $DOTFILES_PATH/.gitconfig ~
+  ln -sfv $DOTFILES_PATH/.screenrc ~
+  ln -sfv $DOTFILES_PATH/.vimrc ~
+  ln -sfv $DOTFILES_PATH/.vim ~
+}
+
+sub_uninstall() {
+  # remove symlinks from user's $HOME
+  unlink ~/.bash_profile
+  unlink ~/.bashrc
+  unlink ~/.gitconfig
+  unlink ~/.screenrc
+  unlink ~/.vimrc
+  unlink ~/.vim
 }
 
 case $COMMAND_NAME in

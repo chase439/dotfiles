@@ -6,17 +6,18 @@ export PATH="$PATH:$DOTFILES_PATH/bin"
 
 # ------------------------------
 # File list to source
+#  - require full paths
 # ------------------------------
 files=()
 files+=("$HOME/.bashrc_developer") # PORT numbers
 files+=("$HOME/.bashrc_secrets") # credentials, keys
-files+=("common/.bashrc")
+files+=("$DOTFILES_PATH/common/.bashrc")
 
 # AWS vs Other Networks
-# files+=("common/.bashrc_aws")
+# files+=("$DOTFILES_PATH/common/.bashrc_aws")
 
 # Project specific
-files+=("projects_specific/.bashrc_ac")
+files+=("$DOTFILES_PATH/projects_specific/.bashrc_ac")
 
 # RVM, load into shell as a function
 files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")
@@ -24,8 +25,9 @@ files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")
 # Iterate through files; if file exists, then source it
 for file in "${files[@]}"
 do
-  [[ -s $file ]] && . $file
+  [[ -s "$file" ]] && source "$file"
 done
 
 print_files() { printf '%s\n' "${files[@]}" ; }
 cddotfiles() { cd $DOTFILES_PATH ; }
+sbashrc() { cd $DOTFILES_PATH ; }
