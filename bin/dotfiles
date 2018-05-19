@@ -22,12 +22,12 @@ sub_help () {
   echo "Commands:"
   echo "   clean            Clean up caches (brew, npm, gem, rvm)"
   echo "   dock             Apply macOS Dock settings"
-  echo "   help             This help message"
+  echo "   help             Display this help message"
   echo "   macos            Apply MacOS system defaults"
   echo "   test             Run tests"
   echo "   update           Run MacOS softwareupdate"
-  echo "   install          Install sym links to $HOME"
-  echo "   uninstall        Uninstall sym links from $HOME"
+  echo "   install          Install sym links to \$HOME"
+  echo "   uninstall        Uninstall sym links from \$HOME"
 }
 
 sub_macos () {
