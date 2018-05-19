@@ -1,4 +1,7 @@
-# Get current dir knowing this file is a symlink from $HOME
+# ------------------------------
+# Env Variables
+# ------------------------------
+# Get current dir knowing ~/.bash_profile is a symlink
 export DOTFILES_PATH="$( cd "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )" && pwd )"
 export DOTFILES_DIR=$DOTFILES_PATH
 
@@ -12,13 +15,13 @@ export PATH="$PATH:$DOTFILES_PATH/bin"
 files=()
 files+=("$HOME/.bashrc_developer") # PORT numbers
 files+=("$HOME/.bashrc_secrets") # credentials, keys
-files+=("$DOTFILES_PATH/common/.bashrc")
+files+=("$DOTFILES_PATH/runcom/common/.bashrc")
 
 # AWS vs Other Networks
-# files+=("$DOTFILES_PATH/common/.bashrc_aws")
+# files+=("$DOTFILES_PATH/runcom/common/.bashrc_aws")
 
 # Project specific
-files+=("$DOTFILES_PATH/projects_specific/.bashrc_ac")
+files+=("$DOTFILES_PATH/runcom/projects_specific/.bashrc_ac")
 
 # RVM, load into shell as a function
 files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")
@@ -29,6 +32,8 @@ do
   [[ -s "$file" ]] && source "$file"
 done
 
+# ------------------------------
+# Functions
+# ------------------------------
 print_files() { printf '%s\n' "${files[@]}" ; }
 cddotfiles() { cd $DOTFILES_PATH ; }
-sbashrc() { cd $DOTFILES_PATH ; }

@@ -1,4 +1,4 @@
-let file=$DOTFILES_PATH.'/common/.vimrc'
+let file=$DOTFILES_PATH.'/runcom/common/.vimrc'
 if filereadable(file)
   execute 'source '.file
 endif
