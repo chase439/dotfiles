@@ -12,16 +12,16 @@ files+=("$HOME/.bashrc_developer") # PORT numbers
 files+=("$HOME/.bashrc_secrets") # credentials, keys
 files+=("common/.bashrc")
 
-## C2S vs Private Network
-# files+=("common/.bashrc_c2s")
+# AWS vs Other Networks
+# files+=("common/.bashrc_aws")
 
-## Project specific
+# Project specific
 files+=("projects_specific/.bashrc_ac")
 
-## RVM, load into shell as a function
+# RVM, load into shell as a function
 files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")
 
-## Iterate through files; if file exists, then source it
+# Iterate through files; if file exists, then source it
 for file in "${files[@]}"
 do
   [[ -s $file ]] && . $file

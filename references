@@ -61,6 +61,17 @@ git clean -fd # remove untracked files and directories
 # ------------------------------
 :let " show all variables
 :echo <variable>  # show var value
+http://learnvimscriptthehardway.stevelosh.com/chapters/19.html - learn about variables and options, local and global
+
+Lessons Learned:
+  Do not put variable value of a directory in quotes as it is treated differently as a value in the current directory
+  let sessiondir=~/vs  # errors with: Invalid expression: ~/vs ; to fix use: let sessiondir=$HOME."/vs"
+  let l:sessiondir=$HOME."/vs" # errors with: Illegal variable name: l:sessiondir ;
+  let &l:<var> is used to set the local value of an option as a variable. It's not to be used for regular variable.
+  Option and regular variable are different things.
+  Options are vim reserved variables for configuring vim.
+  mksession takes variables as literals. Ref: https://stackoverflow.com/questions/13459103
+    To solve this, use: execute "mksession! ".sessiondir."/temp"
 
 # ------------------------------
 # LDAP

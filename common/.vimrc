@@ -54,12 +54,12 @@ if !isdirectory(&directory)
   call mkdir(&directory, "p")
 endif
 
-let g:sessiondir="~/vs"
+let sessiondir=$HOME."/vs"
 if !isdirectory(sessiondir)
-  call mkdir(sessiondir, "p")
+  call mkdir(sessiondir)
 endif
 " whenever you exit or quit vim, auto-create a session file
-autocmd VimLeavePre * mksession! sessiondir.'/temp'
+autocmd VimLeavePre * execute "mksession! ".sessiondir."/temp"
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start

@@ -135,8 +135,10 @@ mysql_dump_dbs() {  # dump all databases
 # ------------------------------
 # replace all tabs with spaces in .erb files
 vim_tab_replace_erb_files() { find . -type f -name "*.erb" | xargs gvim ; } # then ":argo retab | update" in vim
+rm_vim_swapfiles() { rm ~/.vim-temp/* ; }
+gv_last_session() { gv -S ~/vs/temp ; }
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then # Mac OS
   alias gv='mvim'
 elif [[ ! -s $DISPLAY ]] ; then  # X11 is running
   alias gv='gvim'
