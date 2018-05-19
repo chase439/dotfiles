@@ -33,3 +33,8 @@ Troubleshooting
 ===================
   - If gitk GUI doesn't show the proper preferences and ~/.gitk exists, delete ~/.config/git/gitk
 
+Credits
+===================
+Thank you to the following:
+  - https://github.com/webpro/dotfiles
+  - https://github.com/garybernhardt/dotfiles
