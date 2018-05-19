@@ -147,16 +147,18 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR/FONT/Window Sizes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
-  syntax enable
-  set background=dark
-  colorscheme solarized
+syntax enable
+set background=dark
+silent! colorscheme solarized " load colorscheme, silent if it's nonexistent
   
+if has("gui_macvim")
+  set guifont=Monaco:h16
+  set lines=999 columns=9999 " max initial mvim window
+elseif has("gui_running")
   if has("win32") " Windows
     set gfn=Consolas:h16
-    au GUIEnter * simalt ~x  " maximize initial Vim windows
-  else " for X11 on Linux, or Mac
-    " set gfn=Monaco:h16 " Mac
+    au GUIEnter * simalt ~x  " maximize initial gvim window
+  else " for X11 on Linux
     set guifont=Courier\ 10\ Pitch\ 18
     set lines=30 columns=100 " set initial sizes of gvim window
   endif

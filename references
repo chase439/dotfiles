@@ -72,6 +72,9 @@ Lessons Learned:
   Options are vim reserved variables for configuring vim.
   mksession takes variables as literals. Ref: https://stackoverflow.com/questions/13459103
     To solve this, use: execute "mksession! ".sessiondir."/temp"
+  call vs execute
+    :call: Call a function.
+    :exec: Executes a string as an Ex command. It's similar to eval in javascript.
 
 # ------------------------------
 # LDAP
