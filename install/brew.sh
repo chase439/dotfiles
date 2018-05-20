@@ -20,8 +20,8 @@ apps=(
   # ffmpeg
   # fasd
   # gifsicle
-  git
-  git-extras
+  # git
+  # git-extras
   # gnu-sed --with-default-names
   # grep --with-default-names
   # hub
@@ -34,7 +34,7 @@ apps=(
   # pandoc
   # peco
   # psgrep
-  python
+  # python
   # shellcheck
   # ssh-copy-id
   # tree
