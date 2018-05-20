@@ -33,6 +33,7 @@ apps=(
   # nano
   # pandoc
   # peco
+  postgres
   # psgrep
   # python
   # shellcheck

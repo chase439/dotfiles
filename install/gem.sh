@@ -13,4 +13,6 @@ rvm install 2.5
 # rvm use 2.5 --default
 
 gem install lunchy
+gem install bundler
+gem install foreman
 # gem install pygmentize

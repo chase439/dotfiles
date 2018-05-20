@@ -185,25 +185,4 @@ tcov() {  be rake spec:rcov ; }
 migrated() { be rake db:migrate ; }
 migratedt() { be rake db:migrate db:test:prepare ; }
 
-# ------------------------------
-# Heroku
-# ------------------------------
-herokus() { heroku $@ --app cedar-appointmentcare-staging ; } 
-herokup() { heroku $@ --app cedar-appointmentcare-prod ; } 
-herokui() { heroku $@ --app cedar-appointmentcare-integ ; } 
-alias herokup_logs='herokup logs --tail'
-alias herokus_logs='herokus logs --tail'
-alias herokui_logs='herokui logs --tail'
-alias herokup_rconsole='herokup run rails console'
-alias herokus_rconsole='herokus run rails console'
-alias herokui_rconsole='herokus run rails console'
-alias herokup_bash='herokup run bash'
-alias herokus_bash='herokus run bash'
-alias herokui_bash='herokui run bash'
-
-# heroku pgbackups #display backups
-# heroku pgbackups:capture --expire  #create newest DB, delete oldest BU
-# heroku pgbackups:url [b350] #create URL for D/L
-# curl -o stag_20130213.dmp <URL with quotes> #download heroku pgbackup dump from url
-alias import_dump='pg_restore --verbose --clean --no-acl --no-owner -h localhost -U user1 -d appointmentcare_development' #pass in dump file, heroku pgbackups 
 
