@@ -71,19 +71,21 @@ sub_install() {
   # force creation of symlinks in $HOME regardless
   # of file existent, overwrite if needed
   ln -sfv $DOTFILES_PATH/runcom/.bash_profile ~
-  ln -sfv $DOTFILES_PATH/runcom/.gitconfig ~
-  ln -sfv $DOTFILES_PATH/runcom/.screenrc ~
   ln -sfv $DOTFILES_PATH/runcom/.vimrc ~
   ln -sfv $DOTFILES_PATH/.vim ~
+  ln -sfv $DOTFILES_PATH/runcom/.gitconfig ~
+  ln -sfv $DOTFILES_PATH/runcom/.gitk ~  # OK: gitk will overwrite this sym link
+  ln -sfv $DOTFILES_PATH/runcom/.screenrc ~
 }
 
 sub_uninstall() {
   # remove symlinks from user's $HOME
   unlink ~/.bash_profile
-  unlink ~/.gitconfig
-  unlink ~/.screenrc
   unlink ~/.vimrc
   unlink ~/.vim
+  unlink ~/.gitconfig
+  unlink ~/.gitk
+  unlink ~/.screenrc
 }
 
 case $COMMAND_NAME in
