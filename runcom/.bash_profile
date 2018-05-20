@@ -1,3 +1,6 @@
+# If not running interactively, exit
+[ -z "$PS1" ] && return
+
 # ------------------------------
 # Env Variables
 # ------------------------------

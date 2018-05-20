@@ -29,6 +29,7 @@ sub_help () {
   echo "   update           Run MacOS softwareupdate"
   echo "   install          Add (force) sym links to \$HOME"
   echo "   uninstall        Remove sym links from \$HOME"
+  echo "   install_pkgs     Install Brew, NPM, Bash, Gem and their packages"
 }
 
 sub_macos () {
@@ -39,7 +40,21 @@ sub_macos () {
 }
 
 sub_test () {
-  bats "$DOTFILES_PATH"/test/*.bats
+  if is-executable bats; then
+    # Run tests
+    bats "$DOTFILES_PATH"/test/*.bats
+  else
+    echo "Skipped: tests (missing: bats)"
+  fi
+}
+
+sub_install_pkgs() {
+  # Package managers & packages
+  . "$DOTFILES_PATH/install/brew.sh"
+  . "$DOTFILES_PATH/install/npm.sh"
+  . "$DOTFILES_PATH/install/bash.sh"
+  . "$DOTFILES_PATH/install/brew-cask.sh"
+  . "$DOTFILES_PATH/install/gem.sh"
 }
 
 sub_update () {
