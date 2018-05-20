@@ -1,6 +1,6 @@
 Dotfiles
 ===================
-These dotfiles are prefs and settings for the Linux environment. I've generalized them as much as I can, but I've also personalized some files for my specific projects. Please review the files and use them at your own risk.
+These dotfiles are prefs and settings for the Linux environment. It is mostly based on webpro/dotfiles. I've generalized the dotfiles as much as I can, but I've also personalized some files for my specific projects. Please review the files and use them at your own risk.
 
 Installation
 ===================
@@ -26,8 +26,9 @@ The `dotfiles` command
        macos            Apply MacOS system defaults
        test             Run tests
        update           Run MacOS softwareupdate
-       install          Install sym links to $HOME
-       uninstall        Uninstall sym links from $HOME
+       install          Add (force) sym links to $HOME
+       uninstall        Remove sym links from $HOME
+       install_pkgs     Install Brew, NPM, Bash, Gem and their packages
 
 Files / Directories
 ===================
