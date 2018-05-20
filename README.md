@@ -7,11 +7,11 @@ Installation
   1. First, backup any dotfiles in your $HOME (e.g. ~/.bashrc, ~/.gitconfig, ~/.vimrc).
   1. Clone dotfiles repo to your directory
   1. Cd into the dotfiles project
-  1. Run "bin/dotfiles install"
+  1. Run `bin/dotfiles install`
 
 Un-Installation
 ===================
-  1. Run "dotfiles uninstall"
+  1. Run `dotfiles uninstall`
 
 The `dotfiles` command
 ===================
@@ -33,6 +33,7 @@ The `dotfiles` command
 Files / Directories
 ===================
   - runcom directory is for rc files, e.g., .bashrc, .vimrc. RC part stands for "runcom" which expands to "run commands", commands that its software run.
+  - references is a file used to store notes and it's used by the `gg` bash function to `git grep` text in the dotfiles repo.
 
 Troubleshooting
 ===================
