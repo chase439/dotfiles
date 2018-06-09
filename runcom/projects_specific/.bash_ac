@@ -1,4 +1,5 @@
 alias cdac='cd /Users/chasetran7/BackupFromMBP2011/dev/ac/appointmentcare-repo'
+cdac
 start_server() { foreman start ; }
 
 # ------------------------------
@@ -16,6 +17,10 @@ alias herokui_rconsole='herokus run rails console'
 alias herokup_bash='herokup run bash'
 alias herokus_bash='herokus run bash'
 alias herokui_bash='herokui run bash'
+
+# NOTE: foreman run is unaware of bash functions or aliases
+frcd() { foreman run bundle exec rails console ; }
+fmigrated() { foreman run bundle exec rake db:migrate ; }
 
 # heroku pg:backups #display backups
 # heroku pg:backups:capture  #create newest DB, delete oldest BU

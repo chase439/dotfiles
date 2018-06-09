@@ -185,8 +185,3 @@ tcov() {  be rake spec:rcov ; }
 migrated() { be rake db:migrate ; }
 migratedt() { be rake db:migrate db:test:prepare ; }
 
-# foreman run doesn't know about bash functions or aliases
-frcd() { foreman run bundle exec rails console ; }
-fmigrated() { foreman run bundle exec rake db:migrate ; }
-
-
