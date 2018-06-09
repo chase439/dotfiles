@@ -29,7 +29,7 @@ countd() { ls -la | grep ^d | wc -l $@; } # count #directories in directory
 countl() { ls -la | grep ^l | wc -l $@; } # count #sym_links in directory
 count_lines_of_code_in_dir() { find $1 -type f -print0 | xargs -0 wc -l ; }  # recursively
 list_files_by_size() { du -S | sort -n -r | more $@ ; } # recursively, order by largest first
-list_dirs_by_size() { du -skh $@ ; } 
+list_dirs_by_size() { du -skh $@ ; }
 list_drive_sizes() { df -H ; }
 echo_path() { ecoh $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
 root() { sudo su - root ; }
@@ -184,5 +184,9 @@ jaz() { be rake jasmine ; }
 tcov() {  be rake spec:rcov ; }
 migrated() { be rake db:migrate ; }
 migratedt() { be rake db:migrate db:test:prepare ; }
+
+# foreman run doesn't know about bash functions or aliases
+frcd() { foreman run bundle exec rails console ; }
+fmigrated() { foreman run bundle exec rake db:migrate ; }
 
 
