@@ -1,6 +1,6 @@
 Dotfiles
 ===================
-These dotfiles are prefs and settings for the Linux environment. It is mostly based on webpro/dotfiles. I've generalized the dotfiles as much as I can, but I've also personalized some files for my specific projects. Please review the files and use them at your own risk.
+These dotfiles are preferences, configurations, and settings for the Linux environment. They are generalized and personalized to the user and specific projects. Please review the files and use them at your own risk.
 
 Installation
 ===================
@@ -9,7 +9,7 @@ Installation
   1. Cd into the dotfiles project
   1. Run `bin/dotfiles install`
 
-Un-Installation
+UnInstallation
 ===================
   1. Run `dotfiles uninstall`
 
@@ -32,7 +32,7 @@ The `dotfiles` command
 
 Files / Directories
 ===================
-  - runcom directory is for rc files, e.g., .bashrc, .vimrc. RC part stands for "runcom" which expands to "run commands", commands that its software run.
+  - runcom directory is for rc files, e.g., .bashrc, .vimrc. RC part stands for "runcom" which expands to "run commands". The RC files are mostly software configuration files.
   - references is a file used to store notes and it's used by the `gg` bash function to `git grep` text in the dotfiles repo.
 
 Troubleshooting
@@ -43,7 +43,7 @@ Troubleshooting
 
 Credits
 ===================
-Thank you to the following:
+Huge Thank You to the following:
   - https://github.com/webpro/dotfiles
   - https://github.com/garybernhardt/dotfiles
   - https://github.com/sstephenson/bats
