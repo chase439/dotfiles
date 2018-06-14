@@ -146,7 +146,7 @@ elif [[ ! -s $DISPLAY ]] ; then  # X11 is running
 else
   alias gv='gvim'
 fi
-complete -r gv  # remove/reset autocomplete of gv
+complete gv && complete -r gv  # fix gv autocompletion
 
 # ------------------------------
 # SSL
