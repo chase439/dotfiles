@@ -42,6 +42,30 @@ set shell=bash
 set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+set showcmd  " display incomplete commands
+" Enable highlighting for syntax
+syntax on
+" Enable file type detection.
+" Also load indent files, to automatically do language-dependent indenting.
+filetype plugin indent on
+let mapleader=","
+" Fix slow O inserts
+set timeout timeoutlen=1000 ttimeoutlen=100
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
+" Use the old vim regex engine (version 1, as opposed to version 2, which was
+" introduced in Vim 7.3.969). The Ruby syntax highlighting is significantly
+" slower with the new regex engine.
+set re=1
+" Reset what vim thinks is part of a word, i.e., underscore
+set iskeyword&
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" BACKUPS & SESSIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set backup  " keep a backup file
 set backupdir=~/.vim-tmp
 set directory=~/.vim-tmp
@@ -55,26 +79,6 @@ if !isdirectory(sessiondir)
 endif
 " whenever you exit or quit vim, auto-create a session file
 autocmd VimLeavePre * execute "mksession! ".sessiondir."/temp"
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-set showcmd  " display incomplete commands
-" Enable highlighting for syntax
-syntax on
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
-" Also load indent files, to automatically do language-dependent indenting.
-filetype plugin indent on
-let mapleader=","
-" Fix slow O inserts
-:set timeout timeoutlen=1000 ttimeoutlen=100
-" If a file is changed outside of vim, automatically reload it without asking
-set autoread
-" Use the old vim regex engine (version 1, as opposed to version 2, which was
-" introduced in Vim 7.3.969). The Ruby syntax highlighting is significantly
-" slower with the new regex engine.
-set re=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
@@ -92,7 +96,7 @@ augroup vimrcEx
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COLOR/FONT/Window Sizes
+" COLOR/FONT/WINDOW SIZES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
