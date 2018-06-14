@@ -18,14 +18,16 @@ apps=(
   # font-fira-code
   # glimmerblocker
   google-chrome
-  google-chrome-canary
+  # google-chrome-canary
   # hammerspoon
   # kaleidoscope
+  kindle
   # macdown
+  macvim
   # opera
-  # screenflow
+  # screenflow # record Mac screen to create screencast videos
   # slack
-  # sourcetree
+  # sourcetree # Git tree GUI, similar to gitk
   # spotify
   # sublime-text
   # transmit

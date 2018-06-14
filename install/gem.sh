@@ -10,7 +10,7 @@ fi
 
 rvm install 1.9.3
 rvm install 2.5
-# rvm use 2.5 --default
+rvm use 1.9.3 --default
 
 gem install lunchy
 gem install bundler

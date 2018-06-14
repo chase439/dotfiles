@@ -15,33 +15,33 @@ apps=(
   bats
   # battery
   # coreutils
-  # diff-so-fancy
-  # dockutil
+  diff-so-fancy # enhance git diff
+  dockutil # command line tool for managing dock items
   # ffmpeg
   # fasd
   # gifsicle
-  # git
-  # git-extras
+  git
+  git-extras # git summary, effort, ignore
   # gnu-sed --with-default-names
   # grep --with-default-names
-  # hub
-  # httpie
+  # hub # command line tool that wraps git for extra features
+  # httpie # command line HTTP client, PUT, POST
   imagemagick@6
-  # jq
-  # lynx
-  # mackup
+  # jq # command-line JSON processor
+  # lynx # www browser
+  # mackup # backup and restore mac setup
   # nano
-  # pandoc
-  # peco
+  # pandoc # convert files from one markup format into another, powerful
+  # peco # filter logs, process stats, find files; similar to grep, type as you think and view the current results.
   postgres
-  # psgrep
-  # python
-  # shellcheck
-  # ssh-copy-id
-  # tree
-  # unar
+  # psgrep # shortcut for ps aux | gre
+  python
+  shellcheck # executable to check syntax and other issues with a shell script
+  # ssh-copy-id # ssh to other computers
+  # tree # directory listing tool
+  # unar # decompress archives
   wget
-  # wifi-password
+  # wifi-password # Get the password of the wifi you're on
 )
 
 brew install "${apps[@]}"

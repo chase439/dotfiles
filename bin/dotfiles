@@ -51,8 +51,8 @@ sub_test () {
 sub_install_pkgs() {
   # Package managers & packages
   . "$DOTFILES_PATH/install/brew.sh"
-  . "$DOTFILES_PATH/install/npm.sh"
-  . "$DOTFILES_PATH/install/bash.sh"
+  # . "$DOTFILES_PATH/install/npm.sh"
+  # . "$DOTFILES_PATH/install/bash.sh"
   . "$DOTFILES_PATH/install/brew-cask.sh"
   . "$DOTFILES_PATH/install/gem.sh"
 }
