@@ -1,9 +1,14 @@
-[user]  # could also use GIT_AUTHOR_NAME and GIT_AUTHOR_EMAIL instead
-    name = Chase Tran
-    email = rapidror@gmail.com
+[user]
+    # use GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL, GIT_COMMITTER_NAME, GIT_COMMITTER_EMAIL instead
+    # name = Chase Tran
+    # email = rapidror@gmail.com
 [core]
     excludesfile = ~/.gitignore_global
-    autocrlf = true
+    # autocrlf = input for Linux
+    #   true only for Windows with mixed envs!
+    #   false if everyone is developing on Windows!
+    autocrlf = input
+    editor = vim
 [diff]
 [color]
     ui = auto
