@@ -14,15 +14,17 @@ apps=(
   bash-completion2
   bats
   # battery
-  # coreutils
+  coreutils
   diff-so-fancy # enhance git diff
   dockutil # command line tool for managing dock items
+  dos2unix
   # ffmpeg
   # fasd
   # gifsicle
   git
   git-extras # git summary, effort, ignore
   # gnu-sed --with-default-names
+  gpg2 # for rvm install
   # grep --with-default-names
   # hub # command line tool that wraps git for extra features
   # httpie # command line HTTP client, PUT, POST
