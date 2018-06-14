@@ -33,6 +33,7 @@ list_dirs_by_size() { du -skh $@ ; }
 list_drive_sizes() { df -H ; }
 echo_path() { ecoh $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
 root() { sudo su - root ; }
+d2u() { find $1 -type f -print0 | xargs -0 dos2unix ; }  # dos2unix all files recursively in the specified directory
 
 extract() {
   if [ -f "$1" ] ; then
@@ -145,6 +146,7 @@ elif [[ ! -s $DISPLAY ]] ; then  # X11 is running
 else
   alias gv='gvim'
 fi
+complete -r gv  # remove/reset autocomplete of gv
 
 # ------------------------------
 # SSL
