@@ -32,9 +32,16 @@ The `dotfiles` command
 
 Files / Directories
 ===================
-  - runcom directory is for rc files, e.g., .bashrc, .vimrc. RC part stands for "runcom" which expands to "run commands". The RC files are mostly software configuration files.
-  - references is a file used to store notes and it's used by the `gg` bash function to `git grep` text in the dotfiles repo.
-
+  - *runcom* contains rc files, e.g., .bashrc, .vimrc. RC stands for "runcom" which expands to "run commands". The RC files are mostly software configuration files.
+  - *install* contains scripts to install things like brew, brew cask, npm, rvm and their packages.
+  - *.gitmodules* is for git submodules -- other git projects within this git project, e.g. ctrlp.vim.
+  - *test* contains automated test scripts to be used by Bash Automated Testing System (bats).
+  - *.vim* contains vim plugins
+  - *macos* contains script(s) related to configurating the user's desktop on Mac
+  - *system* contains extra runcom bash files
+  - *references* is a file used to store notes and it's used by the `gg` bash function to `git grep` text in the dotfiles repo.
+  - others are self-explanatory
+  
 Troubleshooting
 ===================
   - If gitk GUI doesn't show the proper preferences and ~/.gitk exists, delete ~/.config/git/gitk
