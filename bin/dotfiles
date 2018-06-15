@@ -76,6 +76,11 @@ sub_install() {
   ln -sfv $DOTFILES_PATH/runcom/.gitconfig ~
   ln -sfv $DOTFILES_PATH/runcom/.gitk ~  # OK: gitk will overwrite this sym link
   ln -sfv $DOTFILES_PATH/runcom/.screenrc ~
+
+  cd $DOTFILES_PATH
+  # Git checkout submodule's files
+  git submodule update --init --recursive
+  cd -
 }
 
 sub_uninstall() {

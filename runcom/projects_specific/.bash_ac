@@ -1,5 +1,5 @@
-alias cdac='cd /Users/chasetran7/BackupFromMBP2011/dev/ac/appointmentcare-repo'
-cdac
+alias cdac='cd $HOME/workspace/AppointmentCare'
+cdac # default to project folder
 start_server() { foreman start ; }
 
 # ------------------------------
