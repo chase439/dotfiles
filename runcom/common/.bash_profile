@@ -24,7 +24,7 @@ psmem10() { psmem | head -10 ; } # list top 10 processes eating most CPU
 cpuinfo() { less /proc/cpuinfo ; }
 etime_user() { ps -u $USER -o pid,cmd,etime ; } # display elapsed time for all user's processes
 etime_pid() { ps -o pid,cmd,etime -p ; } # prompt for pid, display elapsed time
-countf() { ls -la | grep ^- | wc -l $@; } # count #files in directory
+countf() { find ${1:-.} -type f | wc -l ; } # recursively count #files in specified or current directory
 countd() { ls -la | grep ^d | wc -l $@; } # count #directories in directory
 countl() { ls -la | grep ^l | wc -l $@; } # count #sym_links in directory
 count_lines_of_code_in_dir() { find $1 -type f -print0 | xargs -0 wc -l ; }  # recursively
