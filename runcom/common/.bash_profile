@@ -136,7 +136,7 @@ mysql_dump_dbs() {  # dump all databases
 # ------------------------------
 # replace all tabs with spaces in .erb files
 vim_tab_replace_erb_files() { find . -type f -name "*.erb" | xargs gvim ; } # then ":argo retab | update" in vim
-rm_vim_swapfiles() { rm ~/.vim-temp/* ; }
+rm_vim_swapfiles() { find ~/.vim-temp -type f | xargs rm ; }
 gv_last_session() { gv -S ~/vs/temp ; }
 
 if [[ "$OSTYPE" == "darwin"* ]]; then # Mac OS
