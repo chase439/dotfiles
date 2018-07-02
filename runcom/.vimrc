@@ -67,8 +67,8 @@ set iskeyword&
 " BACKUPS & SESSIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set backup  " keep a backup file
-set backupdir=~/.vim-tmp
-set directory=~/.vim-tmp
+set backupdir=~/.vim-temp
+set directory=~/.vim-temp
 if !isdirectory(&directory)
   call mkdir(&directory, "p")
 endif
@@ -86,7 +86,7 @@ autocmd VimLeavePre * execute "mksession! ".sessiondir."/temp"
 augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
- 
+
   " for ruby, autoindent with two spaces, always expand tabs
   autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber,rake set ai sw=2 sts=2 et
   autocmd FileType python set sw=2 sts=2 et
@@ -101,7 +101,7 @@ augroup END
 syntax enable
 set background=dark
 silent! colorscheme solarized " load colorscheme, silent if it's nonexistent
-  
+
 if has("gui_macvim")
   set guifont=Monaco:h16
   set lines=999 columns=9999 " max initial mvim window
@@ -166,5 +166,5 @@ nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :noh
 " more info in ctrlp readme.md
 map ,t <c-p>
 let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
-" clear to rescan index, \C runs :CtrlPClearCache<Enter>
+" clear to rescan index; ',C' or ,t + F5
 map <leader>C :CtrlPClearCache<cr>

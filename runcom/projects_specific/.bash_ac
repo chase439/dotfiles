@@ -2,6 +2,11 @@ alias cdac='cd $HOME/workspace/AppointmentCare'
 cdac # default to project folder
 start_server() { foreman start ; }
 
+# override functions as foreman is needed to load ENV variables
+# NOTE: foreman run is unaware of bash functions or aliases
+rcd() { foreman run bundle exec rails console ; }
+migrated() { foreman run bundle exec rake db:migrate ; }
+
 # ------------------------------
 # Heroku
 # ------------------------------
@@ -17,10 +22,6 @@ alias herokui_rconsole='herokus run rails console'
 alias herokup_bash='herokup run bash'
 alias herokus_bash='herokus run bash'
 alias herokui_bash='herokui run bash'
-
-# NOTE: foreman run is unaware of bash functions or aliases
-frcd() { foreman run bundle exec rails console ; }
-fmigrated() { foreman run bundle exec rake db:migrate ; }
 
 # heroku pg:backups #display backups
 # heroku pg:backups:capture  #create newest DB, delete oldest BU
