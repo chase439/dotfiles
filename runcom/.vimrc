@@ -95,9 +95,9 @@ augroup vimrcEx
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
 augroup END
 
-"highlight trailing whitespaces
+"highlight trailing whitespaces; http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd Syntax * syn match ExtraWhitespace /\s\+$/
+autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 " :syntax list   " list all syntaxes
 " :syntax clear ExtraWhitespace   " clear ExtraWhitespace group syntaxes
 
