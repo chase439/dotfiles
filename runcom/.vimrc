@@ -95,10 +95,15 @@ augroup vimrcEx
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
 augroup END
 
+"highlight trailing whitespaces
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd Syntax * syn match ExtraWhitespace /\s\+$/
+" :syntax list   " list all syntaxes
+" :syntax clear ExtraWhitespace   " clear ExtraWhitespace group syntaxes
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR/FONT/WINDOW SIZES
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable
 set background=dark
 silent! colorscheme solarized " load colorscheme, silent if it's nonexistent
 
@@ -128,24 +133,24 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"avoid extra Shift key
 map ; :
-map , \
+" Escape shortcut
 imap jk <Esc>
-"insert (cc) and remove (cu) comments in visual and normal mode
-noremap   <silent> cc      :s,^\(\s*\)[^# \t]\@=,\1# ,e<CR>:nohls<CR>zvj
-noremap   <silent> cu      :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
-   "Hit cc to comment the current line.
-   "6cc to comment 6 lines.
-   "K in visual mode comments the whole selection.
-   "Everything can be uncommented in the same way using CTRL-K
-   "If lines are already commented, they won't have an additional # added to the start.
-   "If a # is followed by a space, it is considered a text comment and doesn't get touched.
+" Shift+Enter to insert block 'end'; 'cc' smart indent inserts 
+imap <S-CR>  <CR><CR>end<Esc>-cc
+
+"insert (,cc) and remove (,cu) comments in visual and normal mode
+"6cc to comment 6 lines; cc is already mapped in Vim core
+noremap   <silent> ,cc      :s,^\(\s*\)[^# \t]\@=,\1# ,e<CR>:nohls<CR>zvj
+noremap   <silent> ,cu      :s,^\(\s*\)# \s\@!,\1,e<CR>:nohls<CR>zvj
+
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-" Cycling through buffers
+" Cycling through buffers; :bd to delete current buffer:w
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
@@ -168,3 +173,6 @@ map ,t <c-p>
 let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
 " clear to rescan index; ',C' or ,t + F5
 map <leader>C :CtrlPClearCache<cr>
+
+" Open/Close NERDTree
+map <leader>q :NERDTreeToggle<CR>
