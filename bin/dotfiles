@@ -76,6 +76,8 @@ sub_install() {
   ln -sfv $DOTFILES_PATH/runcom/.gitconfig ~
   ln -sfv $DOTFILES_PATH/runcom/.gitk ~  # OK: gitk will overwrite this sym link
   ln -sfv $DOTFILES_PATH/runcom/.screenrc ~
+  #ln -sfv $DOTFILES_PATH/runcom/.gtk-2.0 ~ # gvim menu font
+  #ln -sfv $DOTFILES_PATH/runcom/.gemrc ~  # gem sources
 
   cd $DOTFILES_PATH
   # Git checkout submodule's files
@@ -91,6 +93,8 @@ sub_uninstall() {
   unlink ~/.gitconfig
   unlink ~/.gitk
   unlink ~/.screenrc
+  #unlink ~/.gtk-2.0
+  #unlink ~/.gemrc
 }
 
 case $COMMAND_NAME in
