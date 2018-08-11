@@ -28,9 +28,9 @@ countf() { find ${1:-.} -type f | wc -l ; } # recursively count #files in specif
 countd() { ls -la | grep ^d | wc -l $@; } # count #directories in directory
 countl() { ls -la | grep ^l | wc -l $@; } # count #sym_links in directory
 count_lines_of_code_in_dir() { find $1 -type f -print0 | xargs -0 wc -l ; }  # recursively
-list_files_by_size() { du -S | sort -n -r | more $@ ; } # recursively, order by largest first
-list_dirs_by_size() { du -skh $@ ; }
-list_drive_sizes() { df -H ; }
+sizes_of_files() { du -S | sort -n -r | more $@ ; } # recursively, order by largest first
+sizes_of_dirs() { du -skh $@ ; }
+sizes_of_drives() { df -H ; }
 echo_path() { ecoh $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
 root() { sudo su - root ; }
 d2u() { find $1 -type f -print0 | xargs -0 dos2unix ; }  # dos2unix all files recursively in the specified directory
