@@ -22,6 +22,10 @@ rake db:migrate:status
 rake db:rollback STEP=2
 rake db:test:prepare  # update test DB with pending migrations
 
+# new rails app template / generator gems
+thoughtbot / suspenders
+RailsApps / rails-composer
+
 # ------------------------------
 # MySQL
 # ------------------------------

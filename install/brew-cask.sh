@@ -17,6 +17,7 @@ apps=(
   # flux
   # font-fira-code
   # glimmerblocker
+  google-backup-and-sync # Google Drive
   google-chrome
   # google-chrome-canary
   # hammerspoon
@@ -31,6 +32,7 @@ apps=(
   # spotify
   # sublime-text
   # transmit
+  tuxera-ntfs # read and write Windows NTFS
   virtualbox
   # visual-studio-code
   # vlc
