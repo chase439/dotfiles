@@ -11,10 +11,13 @@ alias cdac='cd $HOME/workspace/AppointmentCare/appointmentcare-repo'
 cdac # default to project folder
 start_server() { foreman start ; }
 
-# foreman is used to load ENV variables from project's .env file
+# foreman is used to load variables from project's .env file to ENV
+# it's best to store these ENV variables in bash so
+# we don't have to prefix 'foreman run' in most rails command lines
 # NOTE: 'foreman run' is unaware of bash functions or aliases
-rcd() { foreman run bundle exec rails console ; }
-migrated() { foreman run bundle exec rake db:migrate ; }
+
+rcd() { bundle exec rails console ; }
+migrated() { bundle exec rake db:migrate ; }
 
 # ------------------------------
 # Heroku
