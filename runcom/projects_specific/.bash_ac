@@ -18,6 +18,9 @@ start_server() { foreman start ; }
 
 rcd() { bundle exec rails console ; }
 migrated() { bundle exec rake db:migrate ; }
+psql_acd() { psql appointmentcare_development ; } # login
+export_db_dev() { pg_dump appointmentcare_development > ac_dev_db.dmp ; }
+import_db_dev() { import_dump ac_dev_db.dmp ; }
 
 # ------------------------------
 # Heroku
@@ -38,9 +41,10 @@ alias herokup_migrate='herokup run rake db:migrate'
 alias herokus_migrate='herokus run rake db:migrate'
 alias herokui_migrate='herokui run rake db:migrate'
 
-# heroku pg:backups #display backups
-# heroku pg:backups:capture  #create newest DB, delete oldest BU
-# heroku pg:backups:url [b350] #create URL for D/L
-# curl -o stag_20130213.dmp <URL with quotes> #download heroku pgbackup dump from url
+# herokup pg:backups #display backups
+# herokup pg:backups:capture  #create newest DB, delete oldest BU
+# herokup pg:backups:url b034 #create URL for D/L
+# curl -o ac_prod_20180814.dmp <URL with quotes> #download heroku pgbackup dump from url
+bundle exec rake db:reset # drop the DB, recreate it and load the current schema into it.
 alias import_dump='pg_restore --verbose --clean --no-acl --no-owner -h localhost -U user1 -d appointmentcare_development' #pass in dump file, heroku pgbackups
 
