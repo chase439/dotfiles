@@ -46,5 +46,5 @@ alias herokui_migrate='herokui run rake db:migrate'
 # herokup pg:backups:url b034 #create URL for D/L
 # curl -o ac_prod_20180814.dmp <URL with quotes> #download heroku pgbackup dump from url
 bundle exec rake db:reset # drop the DB, recreate it and load the current schema into it.
-alias import_dump='pg_restore --verbose --clean --no-acl --no-owner -h localhost -U user1 -d appointmentcare_development' #pass in dump file, heroku pgbackups
+alias import_dump='pg_restore --verbose --clean --no-acl --no-owner -h localhost -d appointmentcare_development' #pass in dump file, herokup pgbackups, don't need "-U user1" if database.yml is not using it
 
