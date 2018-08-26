@@ -52,3 +52,7 @@ brew install "${apps[@]}"
 # set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"
 
 # ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
+
+# have launchd start postgresql at login
+launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+# ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
