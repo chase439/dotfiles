@@ -47,6 +47,7 @@ Troubleshooting
   - If gitk GUI doesn't show the proper preferences and ~/.gitk exists, delete ~/.config/git/gitk
   - To run test suite, make sure to first install Bash Automated Testing System (bats). `brew install bats`
   - To run a single test, e.g., `bats --tap test/bin.bats`
+  - If `syntax error: unexpected end of file`, dos2unix the file to fix its line endings.
 
 Credits
 ===================
