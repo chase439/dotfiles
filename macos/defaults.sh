@@ -4,6 +4,21 @@ osascript -e 'tell application "System Preferences" to quit'
 sudo -v
 
 ###############################################################################
+# To find more defaults
+###############################################################################
+# For example with Finder's sidebar,
+# 1. killall Finder; defaults read com.apple.sidebarlists > default.txt
+# 2. make changes
+# 3. killall Finder; defaults read com.apple.sidebarlists > custom.txt
+# 4. diff default.txt custom.txt
+# 5. add the diff here
+# other commands
+#  defaults read # list all defaults
+#  defaults find <word> # find a default
+#  defaults delete com.apple.sidebarlists
+# Finder favorites are not possible as they're mapped to some memory addresses
+
+###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
 
