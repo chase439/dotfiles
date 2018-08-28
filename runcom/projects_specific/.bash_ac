@@ -40,6 +40,8 @@ alias herokui_bash='herokui run bash'
 alias herokup_migrate='herokup run rake db:migrate'
 alias herokus_migrate='herokus run rake db:migrate'
 alias herokui_migrate='herokui run rake db:migrate'
+alias herokup_psql='herokup pg:psql'
+alias herokus_psql='herokus pg:psql'
 
 # herokup pg:backups #display backups
 # herokup pg:backups:capture  #create newest DB, delete oldest BU
