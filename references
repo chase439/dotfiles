@@ -109,6 +109,7 @@ Lessons Learned:
 # normal mode
 s - delete char & insert
 S - delete line & insert
+vip - select paragraph
 
 # visual mode
 s - replace highlighted text
