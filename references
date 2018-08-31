@@ -106,6 +106,13 @@ Lessons Learned:
     :exec: Executes a string as an Ex command. It's similar to eval in javascript.
   in vimrc, leader is the \ key
 
+# normal mode
+s - delete char & insert
+S - delete line & insert
+
+# visual mode
+s - replace highlighted text
+
 # ------------------------------
 # LDAP
 # ------------------------------
