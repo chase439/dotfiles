@@ -110,6 +110,10 @@ Lessons Learned:
 s - delete char & insert
 S - delete line & insert
 vip - select paragraph
+ga - show hex code of character under cursor
+
+# edit mode
+Ctrl+v+u+<char hex code> - insert a special char, use 'ga' to find hex code
 
 # visual mode
 s - replace highlighted text
