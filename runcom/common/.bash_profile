@@ -114,6 +114,8 @@ weather(){ curl -s "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.x
 # ------------------------------
 # Tools Specific Config
 # ------------------------------
+export GREP_OPTIONS='--color=auto' # color matched pattern(s)
+# export GREP_COLOR='green'
 PAGER=/usr/bin/less
 GIT_PAGER='less -r' # wrap long lines when doing git diff
 CUCUMBER_FORMAT='pretty'

@@ -17,7 +17,7 @@ bundle install ~/gem_install_dir --no-deployment --without development test loca
 # migrations
 rails generate scaffold ModelName name:string
 rails generate model ModelName name:string  # model & migration
-rails generate migration= ModelName name:string # only migration file
+rails generate migration ModelName name:string # only migration file
 rake db:migrate:status
 rake db:rollback STEP=2
 rake db:test:prepare  # update test DB with pending migrations
