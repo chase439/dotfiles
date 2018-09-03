@@ -12,6 +12,7 @@ brew tap caskroom/fonts
 apps=(
   # alfred
   anki # app for https://ankiweb.net
+  atom # editor
   # dash2
   # dropbox
   firefox
