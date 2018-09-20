@@ -161,6 +161,7 @@ cert_test_against_server() { openssl s_client -connect localhost:8001 -CAfile $1
 # Git
 # ------------------------------
 alias gs='git status'
+alias ggs='git status'
 alias gb='git branch'
 alias gc='git checkout'
 alias gp='git remote prune origin'

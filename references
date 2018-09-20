@@ -53,6 +53,9 @@ VAR1="${VAR1:-default_value}" # parameter expansion, set to default_value if it'
 yum provides '*/modules/mod_ldap.so'  # find yum packages containing this file
 
 cd - # cd to previous directory
+last # show history of last logged in users
+<space> command # A space before a bash command is not recorded in history.
+> file.txt # flush the content of a text file, same as cat /dev/null > file.txt
 
 The key to autocompletion is the bash command complete
 You can print the rules for vim using:  complete -p vim
