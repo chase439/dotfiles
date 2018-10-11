@@ -11,6 +11,7 @@ brew upgrade
 # Install packages
 
 apps=(
+  # asciiquarium
   bash-completion2
   bats
   # battery
