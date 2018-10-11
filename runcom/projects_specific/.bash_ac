@@ -4,7 +4,6 @@ export AC_CLIENT_URL=http://localhost:5000
 export AC_SECRET_TOKEN=7049ec674ae4cf676f24986d42f6fdcbc61d0b7acdeb04a845046c16b7775f0254c57f62ee32f6de1376967c35bff74054102e92bdbb6fa38d6971ee34f1e515
 export AC_CHARGIFY_API_KEY=
 export AC_CHARGIFY_HOSTED_PAGE_KEY=
-export SENDGRID_USERNAME=adsjf
 export TZ=UTC
 
 alias cdac='cd $HOME/workspace/AppointmentCare/appointmentcare-repo'
@@ -33,7 +32,7 @@ alias herokus_logs='herokus logs --tail'
 alias herokui_logs='herokui logs --tail'
 alias herokup_rconsole='herokup run rails console'
 alias herokus_rconsole='herokus run rails console'
-alias herokui_rconsole='herokus run rails console'
+alias herokui_rconsole='herokui run rails console'
 alias herokup_bash='herokup run bash'
 alias herokus_bash='herokus run bash'
 alias herokui_bash='herokui run bash'
@@ -42,6 +41,7 @@ alias herokus_migrate='herokus run rake db:migrate'
 alias herokui_migrate='herokui run rake db:migrate'
 alias herokup_psql='herokup pg:psql'
 alias herokus_psql='herokus pg:psql'
+alias herokui_psql='herokui pg:psql'
 
 # herokup pg:backups #display backups
 # herokup pg:backups:capture  #create newest DB, delete oldest BU
