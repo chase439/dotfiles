@@ -8,6 +8,7 @@
 export DOTFILES_PATH="$( cd "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )/.." && pwd )"
 export DOTFILES_DIR=$DOTFILES_PATH
 export PATH="$PATH:$DOTFILES_PATH/bin" # Add to PATH
+export PATH="$PATH:/usr/local/Cellar/node/10.1.0/bin" # Add to PATH
 
 # ------------------------------
 # (Full path) File list to source
@@ -23,6 +24,7 @@ files+=("$DOTFILES_PATH/system/.prompt")
 
 # Project specific
 files+=("$DOTFILES_PATH/runcom/projects_specific/.bash_ac")
+files+=("$DOTFILES_PATH/runcom/projects_specific/.bash_bluestar")
 
 # RVM, load into shell as a function
 files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")

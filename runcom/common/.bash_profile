@@ -31,7 +31,7 @@ count_lines_of_code_in_dir() { find $1 -type f -print0 | xargs -0 wc -l ; }  # r
 sizes_of_files() { du -S | sort -n -r | more $@ ; } # recursively, order by largest first
 sizes_of_dirs() { du -skh $@ ; }
 sizes_of_drives() { df -H ; }
-echo_path() { ecoh $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
+echo_path() { echo $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
 root() { sudo su - root ; }
 d2u() { find $1 -type f -print0 | xargs -0 dos2unix ; }  # dos2unix all files recursively in the specified directory
 
