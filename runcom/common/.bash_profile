@@ -24,16 +24,16 @@ psmem10() { psmem | head -10 ; } # list top 10 processes eating most CPU
 cpuinfo() { less /proc/cpuinfo ; }
 etime_user() { ps -u $USER -o pid,cmd,etime ; } # display elapsed time for all user's processes
 etime_pid() { ps -o pid,cmd,etime -p ; } # prompt for pid, display elapsed time
-countf() { find ${1:-.} -type f | wc -l ; } # recursively count #files in specified or current directory
-countd() { ls -la | grep ^d | wc -l $@; } # count #directories in directory
-countl() { ls -la | grep ^l | wc -l $@; } # count #sym_links in directory
-count_lines_of_code_in_dir() { find $1 -type f -print0 | xargs -0 wc -l ; }  # recursively
+countf() { find ${1:-.} -type f -printf 0 | wc -c ; } # recursively count #files in a directory
+countd() { find ${1:-.} -type f -not -path '.' -printf 0 | wc -c ; } # recursively count #dirs in a directory, exclude .
+countl() { find ${1:-.} -type l -printf 0 | wc -c ; } # recursively count #sym_links in a directory
+count_lines_of_code_in_dir() { find ${1:-.} -type f -print0 | xargs -0 wc -l ; }  # recursively
 sizes_of_files() { du -S | sort -n -r | more $@ ; } # recursively, order by largest first
 sizes_of_dirs() { du -skh $@ ; }
 sizes_of_drives() { df -H ; }
 echo_path() { echo $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
 root() { sudo su - root ; }
-d2u() { find $1 -type f -print0 | xargs -0 dos2unix ; }  # dos2unix all files recursively in the specified directory
+d2u() { find ${1:-.} -type f -print0 | xargs -0 dos2unix ; }  # dos2unix all files recursively in the specified directory
 
 extract() {
   if [ -f "$1" ] ; then
