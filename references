@@ -47,6 +47,8 @@ quser # show login time
 # ------------------------------
 # Linux / Bash
 # ------------------------------
+nc -z $HOSTNAME $PORT # test to see if it's alive, -z to scan only
+
 alias stopmail='sudo postfix stop'
 alias startmail='sudo postfix start'
 VAR1="${VAR1:-default_value}" # parameter expansion, set to default_value if it's not set
