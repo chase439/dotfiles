@@ -24,9 +24,9 @@ psmem10() { psmem | head -10 ; } # list top 10 processes eating most CPU
 cpuinfo() { less /proc/cpuinfo ; }
 etime_user() { ps -u $USER -o pid,cmd,etime ; } # display elapsed time for all user's processes
 etime_pid() { ps -o pid,cmd,etime -p ; } # prompt for pid, display elapsed time
-countf() { find ${1:-.} -type f -printf 0 | wc -c ; } # recursively count #files in a directory
-countd() { find ${1:-.} -type f -not -path '.' -printf 0 | wc -c ; } # recursively count #dirs in a directory, exclude .
-countl() { find ${1:-.} -type l -printf 0 | wc -c ; } # recursively count #sym_links in a directory
+countf() { find ${1:-.} -type f | wc -c ; } # recursively count #files in a directory
+countd() { find ${1:-.} -type f -not -path '.' | wc -c ; } # recursively count #dirs in a directory, exclude .
+countl() { find ${1:-.} -type l | wc -c ; } # recursively count #sym_links in a directory
 count_lines_of_code_in_dir() { find ${1:-.} -type f -print0 | xargs -0 wc -l ; }  # recursively
 sizes_of_files() { du -S | sort -n -r | more $@ ; } # recursively, order by largest first
 sizes_of_dirs() { du -skh $@ ; }
