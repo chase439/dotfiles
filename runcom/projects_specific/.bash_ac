@@ -16,8 +16,8 @@ import_db_dev() { import_dump ac_dev_db.dmp ; }
 # ------------------------------
 # Heroku
 # ------------------------------
-herokus() { heroku $@ --app cedar-appointmentcare-staging ; }
-herokup() { heroku $@ --app cedar-appointmentcare-prod ; }
+herokus() { heroku $@ --app appointmentcare-staging ; }
+herokup() { heroku $@ --app appointmentcare-prod ; }
 herokui() { heroku $@ --app appointmentcare-int ; }
 alias herokup_logs='herokup logs --tail'
 alias herokus_logs='herokus logs --tail'
