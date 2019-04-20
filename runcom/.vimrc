@@ -163,7 +163,7 @@ nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :noh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command-t
 " map , \
-" :CommandTFlush " refresh file listing
+" map <leader>C :CommandTFlush<cr>  " refresh file listing
 " set g:CommandTAlwaysShowDotfiles=1
 " set wildignore+=*/.git,*/.sn " exclude SCM metadata directories
 
@@ -174,5 +174,13 @@ let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
 " clear to rescan index; ',C' or ,t + F5
 map <leader>C :CtrlPClearCache<cr>
 
-" Open/Close NERDTree
-map <leader>q :NERDTreeToggle<CR>
+" NERDTree
+map <leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1 " show hidden/dot files
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Tips
+" Use / search, gg and G liberally to move around faster.
+" capital O to expand all folders, X to collapse all
+" r to refresh current directory
+" ? to toggle NerdTree Help page

@@ -41,13 +41,22 @@ Files / Directories
   - `system` contains extra runcom bash files
   - `references` is a file used to store notes and it's used by the `gg` bash function to `git grep` text in the dotfiles repo.
   - others are self-explanatory
-  
+
 Troubleshooting
 ===================
   - If gitk GUI doesn't show the proper preferences and ~/.gitk exists, delete ~/.config/git/gitk
   - To run test suite, make sure to first install Bash Automated Testing System (bats). `brew install bats`
   - To run a single test, e.g., `bats --tap test/bin.bats`
   - If `syntax error: unexpected end of file`, dos2unix the file to fix its line endings.
+
+Adding Vim Plugins
+===================
+  - For example, to add nerdtree:
+    ```
+    git clone https://github.com/scrooloose/nerdtree.git .vim/bundle/nerdtree
+    git submodule add https://github.com/scrooloose/nerdtree.git .vim/bundle/nerdtree
+    ```
+  - It will be autoloaded by pathogen https://github.com/tpope/vim-pathogen
 
 Credits
 ===================
