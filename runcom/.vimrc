@@ -29,7 +29,7 @@ set showmatch  " show matching bracket
 set incsearch  " do incremental searching
 set hlsearch   " highlight search results
 set wrapscan   " wrap around file when searching
-set number     " show line numbers
+set number relativenumber  " show hybrid line numbers, relative and absolute
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 set cursorline " highlight current line
@@ -100,6 +100,13 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 " :syntax list   " list all syntaxes
 " :syntax clear ExtraWhitespace   " clear ExtraWhitespace group syntaxes
+
+" show relative line numbers in normal mode, absolute line numbers in insert mode
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR/FONT/WINDOW SIZES
