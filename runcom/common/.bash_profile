@@ -122,6 +122,10 @@ CUCUMBER_FORMAT='pretty'
 LESS='-isr'
 EDITOR=vim # used by "bundle open <gem_name>" and "git commit"
 
+# follow symbolic links, include hidden files, exclude .git
+# used for fzf command, requires fd executable
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
 # ------------------------------
 # Database
 # ------------------------------

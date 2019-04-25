@@ -21,6 +21,7 @@ apps=(
   dos2unix
   # fasd
   # ffmpeg
+  fd   # alternative to find command, for fzf
   fzf  # fuzzy finder / file searcher
   # gifsicle
   git
