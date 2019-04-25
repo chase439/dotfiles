@@ -9,6 +9,14 @@ if exists("*pathogen#infect")
   execute pathogen#infect()
 endif
 
+" Vim-Plug - similar to pathogen, another plugin manager
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+" update &runtimepath and initialize plugin system
+call plug#end()
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -144,7 +152,7 @@ endif
 map ; :
 " Escape shortcut
 imap jk <Esc>
-" Shift+Enter to insert block 'end'; 'cc' smart indent inserts 
+" Shift+Enter to insert block 'end'; 'cc' smart indent inserts
 imap <S-CR>  <CR><CR>end<Esc>-cc
 
 "insert (,cc) and remove (,cu) comments in visual and normal mode
@@ -168,18 +176,18 @@ nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :noh
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN SPECIFIC CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Command-t
+" Command-t - disabled in favor of FZF
 " map , \
 " map <leader>C :CommandTFlush<cr>  " refresh file listing
 " set g:CommandTAlwaysShowDotfiles=1
 " set wildignore+=*/.git,*/.sn " exclude SCM metadata directories
 
-" CtrlP Plugin
-" more info in ctrlp readme.md
-map ,t <c-p>
-let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
-" clear to rescan index; ',C' or ,t + F5
-map <leader>C :CtrlPClearCache<cr>
+"" CtrlP Plugin - disabled in favor of FZF
+"" more info in ctrlp readme.md
+" map ,t <c-p>
+" let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
+"" clear to rescan index; ',C' or ,t + F5
+" map <leader>C :CtrlPClearCache<cr>
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
@@ -192,7 +200,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " r to refresh current directory
 " ? to toggle NerdTree Help page
 
-if has("gui_macvim")
-  " FZF - fuzzy finder
-  set rtp+=/usr/local/opt/fzf
-endif
+" FZF
+" https://github.com/junegunn/fzf.vim
+" https://github.com/junegunn/fzf/blob/master/README-VIM.md
+" :FZF to activate plugin
+map ,t :FZF<cr>
