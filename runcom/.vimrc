@@ -184,3 +184,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " capital O to expand all folders, X to collapse all
 " r to refresh current directory
 " ? to toggle NerdTree Help page
+
+if has("gui_macvim")
+  " FZF - fuzzy finder
+  set rtp+=/usr/local/opt/fzf
+endif

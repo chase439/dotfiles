@@ -30,6 +30,7 @@ files+=("$DOTFILES_PATH/runcom/projects_specific/.bash_bluestar")
 files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")
 
 files+=("$HOME/.bash_developer") # PORT numbers
+files+=("$HOME/.fzf.bash") # fzf
 
 # Iterate through files; if file exists, then source it
 for file in "${files[@]}"

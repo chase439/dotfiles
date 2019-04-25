@@ -19,8 +19,9 @@ apps=(
   diff-so-fancy # enhance git diff
   dockutil # command line tool for managing dock items
   dos2unix
-  # ffmpeg
   # fasd
+  # ffmpeg
+  fzf  # fuzzy finder / file searcher
   # gifsicle
   git
   git-extras # git summary, effort, ignore
@@ -48,6 +49,10 @@ apps=(
 )
 
 brew install "${apps[@]}"
+
+# if fzf is installed, install its useful key bindings and fuzzy completion
+# this basically creates ~/.fzf.bash and .fzf.zsh
+[ -x "$(command -v fzf)" ] && $(brew --prefix)/opt/fzf/install
 
 # export DOTFILES_BREW_PREFIX_COREUTILS=`brew --prefix coreutils`
 # set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"
