@@ -190,18 +190,27 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN SPECIFIC CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Command-t - disabled in favor of FZF
-" map , \
-" map <leader>C :CommandTFlush<cr>  " refresh file listing
-" set g:CommandTAlwaysShowDotfiles=1
-" set wildignore+=*/.git,*/.sn " exclude SCM metadata directories
+" comment block, stuff I'm disabling in favor of FZF
+function! _blockcomment()
 
-"" CtrlP Plugin - disabled in favor of FZF
-"" more info in ctrlp readme.md
-" map ,t <c-p>
-" let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
-"" clear to rescan index; ',C' or ,t + F5
-" map <leader>C :CtrlPClearCache<cr>
+  " Command-t plugin
+  map , \
+  map <leader>C :CommandTFlush<cr>  " refresh file listing
+  set g:CommandTAlwaysShowDotfiles=1
+  set wildignore+=*/.git,*/.sn " exclude SCM metadata directories
+
+  " CtrlP Plugin
+  " more info in ctrlp readme.md
+  map ,t <c-p>
+  let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
+  if executable('ag')
+    " if ag command exists, fuzzy find files super fast using the silver surfer ag command
+    let g:ctrlp_user_command='ag %s -l --hidden --nocolor -g ""'
+  endif
+  " clear to rescan index; ',C' or ,t + F5
+  map <leader>C :CtrlPClearCache<cr>
+  
+endfunction 
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
