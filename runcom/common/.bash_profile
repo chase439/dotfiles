@@ -172,7 +172,11 @@ alias gp='git remote prune origin'
 alias gmnff='git merge --no-ff'
 alias gd='git diff'
 alias gl='git log -n 4'
-gg() { (cddotfiles && git grep $@) ; }
+gg() {
+  pushd $DOTFILES_PATH > /dev/null
+  git grep $@ -- './*' ':(exclude).vim/' ':(exclude)runcom/.gitk' ':(exclude).vscode/extensions' ;
+  popd > /dev/null
+}
 git_chmodx() { git update-index --chmod=+x $1 ; }
 git_chmodls() { git ls-tree HEAD $1 ; }
 glola() { git log --graph --decorate --pretty=oneline --abbrev-commit --all ; }
