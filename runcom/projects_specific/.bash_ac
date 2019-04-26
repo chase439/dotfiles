@@ -1,4 +1,5 @@
-alias cdac='cd $HOME/workspace/AppointmentCare/appointmentcare-repo'
+alias cdac='cd $HOME/workspace/AppointmentCare/AppointmentCare.git'
+alias cdacv='cd $HOME/workspace/AppointmentCare/AppointmentCareVue.git'
 cdac # default to project folder
 start_server() { foreman start ; }
 
