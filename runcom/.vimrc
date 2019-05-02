@@ -205,6 +205,7 @@ function! _blockcomment()
   let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
   if executable('ag')
     " if ag command exists, fuzzy find files super fast using the silver surfer ag command
+    "   --unrestricted option to ignore rules in .gitignore and .ignore, etc.
     let g:ctrlp_user_command='ag %s -l --hidden --nocolor -g ""'
   endif
   " clear to rescan index; ',C' or ,t + F5
