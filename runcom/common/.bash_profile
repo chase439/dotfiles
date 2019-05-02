@@ -173,8 +173,12 @@ alias gmnff='git merge --no-ff'
 alias gd='git diff'
 alias gl='git log -n 4'
 gg() {
-  pushd $DOTFILES_PATH > /dev/null
+  # auto exclude files in .git and .gitignore
   git grep $@ -- './*' ':(exclude).vim/' ':(exclude)runcom/.gitk' ':(exclude).vscode/extensions' ;
+}
+ggd() {
+  pushd $DOTFILES_PATH > /dev/null
+  gg $@ ;
   popd > /dev/null
 }
 git_chmodx() { git update-index --chmod=+x $1 ; }
