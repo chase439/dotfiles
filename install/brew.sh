@@ -11,6 +11,7 @@ brew upgrade
 # Install packages
 
 apps=(
+  ag # the silver surfer for fast file searching
   # asciiquarium
   bash-completion2
   bats

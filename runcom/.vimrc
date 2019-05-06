@@ -190,7 +190,7 @@ vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN SPECIFIC CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" comment block, stuff I'm disabling in favor of FZF
+" comment block, stuff I'm disabling
 function! _blockcomment()
 
   " Command-t plugin
@@ -199,19 +199,24 @@ function! _blockcomment()
   set g:CommandTAlwaysShowDotfiles=1
   set wildignore+=*/.git,*/.sn " exclude SCM metadata directories
 
-  " CtrlP Plugin
-  " more info in ctrlp readme.md
-  map ,t <c-p>
-  let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
-  if executable('ag')
-    " if ag command exists, fuzzy find files super fast using the silver surfer ag command
-    "   --unrestricted option to ignore rules in .gitignore and .ignore, etc.
-    let g:ctrlp_user_command='ag %s -l --hidden --nocolor -g ""'
-  endif
-  " clear to rescan index; ',C' or ,t + F5
-  map <leader>C :CtrlPClearCache<cr>
-  
-endfunction 
+  " FZF
+  " https://github.com/junegunn/fzf.vim
+  " https://github.com/junegunn/fzf/blob/master/README-VIM.md
+  " :FZF to activate plugin
+  map ,t :FZF<cr>
+endfunction
+
+" CtrlP Plugin
+" more info in ctrlp readme.md
+map ,t <c-p>
+let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
+if executable('ag')
+  " if ag command exists, fuzzy find files super fast using the silver surfer ag command
+  "   --unrestricted option to ignore rules in .gitignore and .ignore, etc.
+  let g:ctrlp_user_command='ag %s -l --hidden --nocolor -g ""'
+endif
+" clear to rescan index; ',C' or ,t + F5
+map <leader>C :CtrlPClearCache<cr>
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
@@ -224,8 +229,3 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " r to refresh current directory
 " ? to toggle NerdTree Help page
 
-" FZF
-" https://github.com/junegunn/fzf.vim
-" https://github.com/junegunn/fzf/blob/master/README-VIM.md
-" :FZF to activate plugin
-map ,t :FZF<cr>
