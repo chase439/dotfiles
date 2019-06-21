@@ -152,8 +152,8 @@ endif
 map ; :
 " Escape shortcut
 imap jk <Esc>
-" Shift+Enter to insert block 'end'; 'cc' smart indent inserts
-imap <S-CR>  <CR><CR>end<Esc>-cc
+" Ctrl+e to insert block 'end'; 'cc' to smart indent insert
+imap <c-e>  <CR><CR>end<Esc>-cc
 
 "insert (,cc) and remove (,cu) comments in visual and normal mode
 "6cc to comment 6 lines; cc is already mapped in Vim core
