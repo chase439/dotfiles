@@ -218,7 +218,7 @@ g5commits() { git for-each-ref --count=5 --sort=-committerdate refs ; }  # list 
 # Rails Related
 # ------------------------------
 be() { bundle exec $@ ; }
-rcd() { be rails console development ; }
+rcd() { be rails console -e development ; }
 #irb() { ruby -S irb ; } # w/out readline installed; allows backspace & arrow keys to be used
 # be rspec spec
 # alias rspec='rspec --color --format documentation'
