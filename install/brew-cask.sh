@@ -23,6 +23,7 @@ apps=(
   google-chrome
   # google-chrome-canary
   # hammerspoon
+  java # latest jdk
   # kaleidoscope
   kindle
   # macdown

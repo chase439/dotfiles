@@ -17,12 +17,21 @@ import_db_dev() { import_dump ac_dev_db.dmp ; }
 # ------------------------------
 # Heroku
 # ------------------------------
+herokuvi() { heroku $@ --app ac-vue-int ; }
+herokuvs() { heroku $@ --app ac-vue-stag ; }
+herokuvp() { heroku $@ --app ac-vue-prod ; }
+herokuai() { heroku $@ --app ac-api-int ; }
+herokuas() { heroku $@ --app ac-api-stag ; }
+herokuap() { heroku $@ --app ac-api-prod ; }
+herokui() { heroku $@ --app appointmentcare-int ; }
 herokus() { heroku $@ --app appointmentcare-staging ; }
 herokup() { heroku $@ --app appointmentcare-prod ; }
-herokui() { heroku $@ --app appointmentcare-int ; }
 alias herokup_logs='herokup logs --tail'
 alias herokus_logs='herokus logs --tail'
 alias herokui_logs='herokui logs --tail'
+alias herokuap_rconsole='herokuap run rails console'
+alias herokuas_rconsole='herokuas run rails console'
+alias herokuai_rconsole='herokuai run rails console'
 alias herokup_rconsole='herokup run rails console'
 alias herokus_rconsole='herokus run rails console'
 alias herokui_rconsole='herokui run rails console'
