@@ -34,6 +34,17 @@ sizes_of_drives() { df -H ; }
 echo_path() { echo $PATH | tr ':' '\n' ; } # list PATHs, separate : into newline
 root() { sudo su - root ; }
 d2u() { find ${1:-.} -type f -print0 | xargs -0 dos2unix ; }  # dos2unix all files recursively in the specified directory
+empty-files-in-current-dir() {
+  read -p 'Are you sure? (N or Ctrl+C to cancel!) ' u_sure;
+  if [[ "$u_sure" != "N" ]]; then
+    find . -type f -exec sh -c '>"{}"' \; ;
+  fi
+}
+# if argument is an alias, function or binary, return true, else false
+is-executable() {
+  type "$1" >/dev/null 2>&1
+  return $?
+}
 
 extract() {
   if [ -f "$1" ] ; then
