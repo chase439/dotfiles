@@ -8,7 +8,7 @@
 export DOTFILES_PATH="$( cd "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )/.." && pwd )"
 export DOTFILES_DIR=$DOTFILES_PATH
 export PATH="$PATH:$DOTFILES_PATH/bin" # Add to PATH
-export PATH="$PATH:/usr/local/Cellar/node/10.1.0/bin" # Add to PATH
+export PATH="/usr/local/sbin:$PATH:/usr/local/Cellar/node/10.1.0/bin" # Add to brew and node
 
 # ------------------------------
 # (Full path) File list to source
