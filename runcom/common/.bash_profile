@@ -118,14 +118,14 @@ weather(){ curl -s "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.x
 DIRS_PATH=$DOTFILES_PATH/runcom/.dirs
 # if file doesn't exist, create it
 if [ ! -f $DIRS_PATH ]; then
-  touch $DIRS_PATH 
+  touch $DIRS_PATH
 fi
 source $DIRS_PATH
 show-dirs() { cat $DIRS_PATH ; }
 empty-dirs() { > $DIRS_PATH ; }
 delete-dir() {
-  # delete any dir aliases matching name argument
-  sed -i "/cd$1=/d" $DIRS_PATH ; 
+  # delete any dir aliases matching name argument, mac requires backup
+  sed -i.bak "/cd$1=/d" $DIRS_PATH ;
 }
 save-dir() {
   if [ -z "$1" ] ; then
@@ -135,7 +135,7 @@ save-dir() {
   else
     delete-dir $1 ;
     echo "alias cd$1='cd `pwd`'" >> $DIRS_PATH ; # append dir
-    source $DIRS_PATH ; 
+    source $DIRS_PATH ;
   fi
 }
 

@@ -1,3 +1,0 @@
-# This file is managed by save-dir and delete-dir functions
-
-alias cddotfiles="cd $DOTFILES_PATH"
