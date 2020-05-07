@@ -28,6 +28,9 @@ files+=("$DOTFILES_PATH/runcom/projects_specific/.bash_bluestar")
 
 # RVM, load into shell as a function
 files+=("${rvm_path:-$HOME/.rvm}/scripts/rvm")
+export NVM_DIR="$HOME/.nvm"
+files+=("/usr/local/opt/nvm/nvm.sh") # This loads nvm
+files+=("/usr/local/opt/nvm/etc/bash_completion.d/nvm") # This loads nvm bash_completion
 
 files+=("$HOME/.bash_developer") # PORT numbers
 files+=("$HOME/.fzf.bash") # fzf
