@@ -72,6 +72,7 @@ sub_install() {
   # of file existent, overwrite if needed
   ln -sfv $DOTFILES_PATH/runcom/.bash_profile ~
   ln -sfv $DOTFILES_PATH/runcom/.vimrc ~
+  ln -sfv $DOTFILES_PATH/runcom/.npmrc ~
   ln -sfv $DOTFILES_PATH/.vim ~
   ln -sfv $DOTFILES_PATH/runcom/.gitconfig ~
   ln -sfv $DOTFILES_PATH/runcom/.gitk ~  # OK: gitk will overwrite this sym link
@@ -89,6 +90,7 @@ sub_uninstall() {
   # remove symlinks from user's $HOME
   unlink ~/.bash_profile
   unlink ~/.vimrc
+  unlink ~/.npmrc
   unlink ~/.vim
   unlink ~/.gitconfig
   unlink ~/.gitk
