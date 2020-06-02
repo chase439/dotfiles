@@ -1,6 +1,5 @@
 alias cdac='cd $HOME/workspace/AppointmentCare/AppointmentCare.git'
 alias cdacv='cd $HOME/workspace/AppointmentCare/AppointmentCareVue.git'
-cdac # default to project folder
 start_server() { foreman start ; }
 
 # foreman is used to load variables from project's .env file to ENV

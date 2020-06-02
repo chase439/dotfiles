@@ -45,3 +45,5 @@ done
 # Functions
 # ------------------------------
 print_files() { printf '%s\n' "${files[@]}" ; }
+
+cdblops # default to folder
