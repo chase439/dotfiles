@@ -113,6 +113,22 @@ weather(){ curl -s "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.x
 # nslookup <IP/DN> # DNS lookup, find IP of load balancer
 
 # ------------------------------
+# MacOS specifics
+# ------------------------------
+if [[ "$OSTYPE" == "darwin"* ]]; then # Mac OS
+  # similar to netstat in Linux
+  listening() {
+    if [ $# -eq 0 ]; then
+      sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+      sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+      echo "Usage: listening [pattern]"
+    fi
+  }
+fi
+
+# ------------------------------
 # Easy cd navigation
 # ------------------------------
 DIRS_PATH=$DOTFILES_PATH/runcom/.dirs
