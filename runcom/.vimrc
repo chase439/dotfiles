@@ -204,6 +204,7 @@ function! _blockcomment()
 endfunction
 
 " CtrlP Plugin
+" use :CtrlP . or :CtrlPCurWD when you need to search in the current directory.
 " more info in ctrlp readme.md
 map ,t <c-p>
 let g:ctrlp_show_hidden=1  " show dotfiles and not .git/

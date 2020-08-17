@@ -49,7 +49,7 @@ alias herokui_psql='herokui pg:psql'
 # herokup pg:backups:url b034 #create URL for D/L
 # curl -o ac_prod_20180814.dmp <URL with quotes> #download heroku pgbackup dump from url
 # bundle exec rake db:reset # drop the DB, recreate it and load the current schema into it.
-alias import_dump='pg_restore --verbose --clean --no-acl --no-owner -h localhost -d appointmentcare_development' #pass in dump file, herokup pgbackups, don't need "-U user1" if database.yml is not using it
+alias import_dump='pg_restore --verbose --clean --no-acl --no-owner -h localhost -d appointmentcare_production' #pass in dump file, herokup pgbackups, don't need "-U user1" if database.yml is not using it
 # herokui pg:backups:restore "`herokup pg:backups:url`" HEROKU_POSTGRESQL_ROSE  # restore prod data onto integration
 
 # herokui config:set AC_HOST_URL=https://appointmentcare-int.herokuapp.com AC_CLIENT_URL=https://appointmentcare-int.herokuapp.com AC_SECRET_TOKEN=e1071065d9c7d04c1c936fae152b8507cfdc109905d1f46d293306ee61b38e4fd2d14f19933132acb51f71aa258a8421d320710ab384834b46887d906c616e41 BUNDLE_WITHOUT=development:test LOG_LEVEL=DEBUG RACK_ENV=integration RAILS_ENV=integration TZ=UTC
