@@ -16,9 +16,9 @@ export PATH="$PATH:/Users/chasetran7/workspace/software/elastic/elasticsearch-6.
 # ------------------------------
 files=()
 files+=("$HOME/.bash_secrets") # credentials, keys
-files+=("$DOTFILES_PATH/runcom/common/.bash_profile") # this sources .dirs
 files+=("$DOTFILES_PATH/system/.function")
 files+=("$DOTFILES_PATH/system/.prompt")
+files+=("$DOTFILES_PATH/runcom/common/.bash_profile") # this sources .dirs
 
 # AWS vs Other Networks
 # files+=("$DOTFILES_PATH/runcom/common/.bash_aws")
