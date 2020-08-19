@@ -8,8 +8,8 @@ HISTTIMEFORMAT="[%F] [%T] " # display datetime in history
 HISTFILE=~/.bash_unlimited_history
 HISTCONTROL=ignoredups:erasedups
 HISTIGNORE="&:ls:[bf]g:g[sd]:exit:pwd:clear" # ignore particular commands
-# Append, clear and reload the history after each command finishes
 # PROMPT_COMMAND is executed before the next prompt is printed (IIRC).
+# Append, clear and reload the history after each command finishes
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # ------------------------------
