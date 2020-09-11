@@ -230,6 +230,7 @@ alias gc='git checkout'
 alias gp='git remote prune origin'
 alias gmnff='git merge --no-ff'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gl='git log -n 4'
 gg() {
   # auto exclude files in .git and .gitignore
