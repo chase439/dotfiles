@@ -8,3 +8,4 @@ fi
 # for passenger-install-apache2-module
 # export APXS2=$SOFTWARE/httpd-2.4.29/bin/apxs
 # pathmunge $SOFTWARE_PATH/httpd-2.4.29/bin
+export AWS_REGION=us-east-1
