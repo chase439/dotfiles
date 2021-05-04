@@ -262,3 +262,31 @@ tcov() {  be rake spec:rcov ; }
 migrated() { be rake db:migrate ; }
 migratedt() { be rake db:migrate db:test:prepare ; }
 
+
+# ------------------------------
+# Node Related
+# ------------------------------
+#
+# Run 'nvm use' automatically every time there's 
+# a .nvmrc file in the directory. Also, revert to default 
+# version when entering a directory without .nvmrc
+#
+switch_node_version() {
+  if [[ $PWD == $PREV_PWD ]]; then
+      return
+  fi
+
+  PREV_PWD=$PWD
+  if [[ -f ".nvmrc" ]]; then
+      nvm use > /dev/null
+      NVM_DIRTY=true
+  elif [[ $NVM_DIRTY = true ]]; then
+      nvm use default > /dev/null
+      NVM_DIRTY=false
+  fi
+}
+cdnvm() {
+  cd "$@";
+  switch_node_version;
+}
+alias cd='cdnvm'
