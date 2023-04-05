@@ -64,3 +64,4 @@ Huge Thank You to the following:
   - https://github.com/webpro/dotfiles
   - https://github.com/garybernhardt/dotfiles
   - https://github.com/sstephenson/bats
+  - https://github.com/jayharris/dotfiles-windows
