@@ -21,6 +21,16 @@ function gmnff { git merge --no-ff }
 function gd { git diff }
 function gdc { git diff --cached }
 function gl { git log -n 4 }
+# git pull current branch instead of all branches
+function gpull {
+    $cur_head="$(git rev-parse --abbrev-ref HEAD)"
+    & git pull origin ${cur_head}
+}
+# git push current branch instead of all branches
+function gpush {
+    $cur_head="$(git rev-parse --abbrev-ref HEAD)"
+    & git push origin ${cur_head}
+}
 function gg($String) {
   # auto exclude files in .git and .gitignore, search for both tracked and untracked files
   git grep --ignore-case --untracked $String './*' ':(exclude).vim/' ':(exclude)runcom/.gitk' ':(exclude).vscode/extensions' ;

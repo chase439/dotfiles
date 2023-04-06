@@ -232,6 +232,9 @@ alias gmnff='git merge --no-ff'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl='git log -n 4'
+# pull latest git changes into current branch
+alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
+alias gpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
 gg() {
   # auto exclude files in .git and .gitignore
   git grep $@ -- './*' ':(exclude).vim/' ':(exclude)runcom/.gitk' ':(exclude).vscode/extensions' ;
