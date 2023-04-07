@@ -11,6 +11,7 @@ ${function:......} = { Set-Location ..\..\..\..\.. }
 # Navigation Shortcuts
 ${function:cdcpxage} = { Set-Location C:\git\One\CPX-AGE }
 ${function:cdacr} = { Set-Location C:\AI-AzureCIP-Distribution }
+${function:cdacrbuildout} = { Set-Location C:\AI-AzureCIP-Distribution\src\AI.DataDistribution\AzureConsumptionRevenue\AcrInfra_Bootstrap\Airgap_Infra_Deployment }
 ${function:cddotfiles} = { Set-Location C:\Users\chasetran\source\repos\dotfiles }
 ${function:cddesktop} = { Set-Location ~\Desktop }
 
@@ -29,6 +30,7 @@ if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path) {
 } else {
     # List all files, including hidden files
     ${function:la} = { ls -Force @args }
+    Set-Alias ll la
     # List only directories
     ${function:lsd} = { Get-ChildItem -Directory -Force @args }
 }
