@@ -1,3 +1,116 @@
+# ------------------------------
+# Git
+#
+# The ampersand operator forces PowerShell to execute the following
+# arguments as a command (CMD). It may not always be required, but I
+# found it avoids any unintended effects that could result from
+# arguments injected at the end of the command ($args) being
+# evaluated incorrectly.
+# ------------------------------
+function Get-GitStatus { & git status $args }
+New-Alias -Name gs -Value Get-GitStatus -Force -Option AllScope
+function Get-GitAdd { & git add $args }
+New-Alias -Name ga -Value Get-GitAdd -Force -Option AllScope
+function Get-GitTree { & git log --graph --oneline --decorate $args }
+New-Alias -Name gt -Value Get-GitTree -Force -Option AllScope
+function Get-GitCheckout { & git checkout $args }
+New-Alias -Name gc -Value Get-GitCheckout -Force -Option AllScope
+function Get-GitBranch { & git branch $args }
+New-Alias -Name gb -Value Get-GitBranch -Force -Option AllScope
+function Get-GitRemote { & git remote -v $args }
+New-Alias -Name gr -Value Get-GitRemote -Force -Option AllScope
+function Get-GitPrune { & git remote prune origin }
+New-Alias -Name gprune -Value Get-GitPrune -Force -Option AllScope
+function Get-GitMergeNFF { & git merge --no-ff }
+New-Alias -Name gmnff -Value Get-GitMergeNFF -Force -Option AllScope
+function Get-GitDiff { & git diff $args }
+New-Alias -Name gd -Value Get-GitDiff -Force -Option AllScope
+function Get-GitDiffCached { & git diff --cached $args }
+New-Alias -Name gdc -Value Get-GitDiffCached -Force -Option AllScope
+function Get-GitLog4 { & git log -n 4 $args }
+New-Alias -Name gl4 -Value Get-GitLog4 -Force -Option AllScope
+function Get-GitFetch { & git fetch $args }
+New-Alias -Name gfetch -Value Get-GitFetch -Force -Option AllScope
+
+# git pull current branch instead of all branches
+function Get-GitPull {
+    $cur_head="$(git rev-parse --abbrev-ref HEAD)"
+    & git pull origin ${cur_head}
+}
+New-Alias -Name gpull -Value Get-GitPull -Force -Option AllScope
+
+# git push current branch instead of all branches
+function Get-GitPush {
+    $cur_head="$(git rev-parse --abbrev-ref HEAD)"
+    & git push origin ${cur_head}
+}
+New-Alias -Name gpush -Value Get-GitPush -Force -Option AllScope
+
+function gg($String) {
+  # auto exclude files in .git and .gitignore, search for both tracked and untracked files
+  git grep --ignore-case --untracked $String './*' ':(exclude).vim/' ':(exclude)runcom/.gitk' ':(exclude).vscode/extensions' ;
+}
+# If currently in a git repo, then use git grep since it's faster, otherwise use powershell commands
+function gg2($String) {
+    if (git rev-parse --is-inside-work-tree 2> $null) {
+        git grep --ignore-case --name-only --untracked $String | % { Join-Path $pwd.Path ($_ -Replace '\/','\') | Get-Item; };
+    } else {
+        gci -Recurse -File -Path * -Exclude @('*.pdf','*.exe','*.dll','','','') | ? { $_ | sls $string -Quiet; };
+    };
+};
+
+function get-definition($String) {
+  (Get-Command $String).Definition ;
+};
+
+# gci cmdlet is alias for Get-ChildItem
+# wildcard is prefixed and suffixed.
+function ffiles($String) {
+	Get-ChildItem -File -Recurse -Filter "*$String*" ;
+};
+function fpaths($String) {
+	Get-ChildItem -Path "." -Recurse -Filter "*$String*" ;
+};
+
+# change Prompt with git branch and colors
+function Write-BranchName () {
+    try {
+        $branch = git rev-parse --abbrev-ref HEAD
+
+        if ($branch -eq "HEAD") {
+            # we're probably in detached HEAD state, so print the SHA
+            $branch = git rev-parse --short HEAD
+            Write-Host " ($branch)" -ForegroundColor "red"
+        }
+        else {
+            # we're on an actual branch, so print it
+            Write-Host " ($branch)" -ForegroundColor "blue"
+        }
+    } catch {
+        # we'll end up here if we're in a newly initiated git repo
+        Write-Host " (no branches yet)" -ForegroundColor "yellow"
+    }
+}
+
+function prompt {
+    $base = "PS "
+    $path = "$($executionContext.SessionState.Path.CurrentLocation)"
+    $userPrompt = "$('>' * ($nestedPromptLevel + 1)) "
+
+    Write-Host "`n$base" -NoNewline
+
+    if (git rev-parse --is-inside-work-tree 2> $null) {
+        Write-Host $path -NoNewline -ForegroundColor "green"
+        Write-BranchName
+    }
+    else {
+        # we're not in a repo so don't bother displaying branch name/sha
+        Write-Host $path -ForegroundColor "green"
+    }
+
+    return $userPrompt
+}
+
 # Basic commands
 function which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition }
 function touch($file) { "" | Out-File $file -Encoding ASCII }

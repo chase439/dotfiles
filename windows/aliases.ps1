@@ -10,6 +10,7 @@ ${function:......} = { Set-Location ..\..\..\..\.. }
 
 # Navigation Shortcuts
 ${function:cdcpxage} = { Set-Location C:\git\One\CPX-AGE }
+${function:cdcpxairgap} = { Set-Location C:\Users\chasetran\source\repos\CPX-Airgap }
 ${function:cdacr} = { Set-Location C:\AI-AzureCIP-Distribution }
 ${function:cdacrbuildout} = { Set-Location C:\AI-AzureCIP-Distribution\src\AI.DataDistribution\AzureConsumptionRevenue\AcrInfra_Bootstrap\Airgap_Infra_Deployment }
 ${function:cddotfiles} = { Set-Location C:\Users\chasetran\source\repos\dotfiles }
