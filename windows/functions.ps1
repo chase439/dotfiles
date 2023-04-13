@@ -7,44 +7,44 @@
 # arguments injected at the end of the command ($args) being
 # evaluated incorrectly.
 # ------------------------------
-function Get-GitStatus { & git status $args }
-New-Alias -Name gs -Value Get-GitStatus -Force -Option AllScope
-function Get-GitAdd { & git add $args }
-New-Alias -Name ga -Value Get-GitAdd -Force -Option AllScope
-function Get-GitTree { & git log --graph --oneline --decorate $args }
-New-Alias -Name gt -Value Get-GitTree -Force -Option AllScope
-function Get-GitCheckout { & git checkout $args }
-New-Alias -Name gc -Value Get-GitCheckout -Force -Option AllScope
-function Get-GitBranch { & git branch $args }
-New-Alias -Name gb -Value Get-GitBranch -Force -Option AllScope
-function Get-GitRemote { & git remote -v $args }
-New-Alias -Name gr -Value Get-GitRemote -Force -Option AllScope
-function Get-GitPrune { & git remote prune origin }
-New-Alias -Name gprune -Value Get-GitPrune -Force -Option AllScope
-function Get-GitMergeNFF { & git merge --no-ff }
-New-Alias -Name gmnff -Value Get-GitMergeNFF -Force -Option AllScope
-function Get-GitDiff { & git diff $args }
-New-Alias -Name gd -Value Get-GitDiff -Force -Option AllScope
-function Get-GitDiffCached { & git diff --cached $args }
-New-Alias -Name gdc -Value Get-GitDiffCached -Force -Option AllScope
-function Get-GitLog4 { & git log -n 4 $args }
-New-Alias -Name gl4 -Value Get-GitLog4 -Force -Option AllScope
-function Get-GitFetch { & git fetch $args }
-New-Alias -Name gfetch -Value Get-GitFetch -Force -Option AllScope
+function Git-Status { & git status $args }
+New-Alias -Name gs -Value Git-Status -Force -Option AllScope
+function Git-Add { & git add $args }
+New-Alias -Name ga -Value Git-Add -Force -Option AllScope
+function Git-Tree { & git log --graph --oneline --decorate $args }
+New-Alias -Name gt -Value Git-Tree -Force -Option AllScope
+function Git-Checkout { & git checkout $args }
+New-Alias -Name gc -Value Git-Checkout -Force -Option AllScope
+function Git-Branch { & git branch $args }
+New-Alias -Name gb -Value Git-Branch -Force -Option AllScope
+function Git-Remote { & git remote -v $args }
+New-Alias -Name gr -Value Git-Remote -Force -Option AllScope
+function Git-Prune { & git remote prune origin }
+New-Alias -Name gprune -Value Git-Prune -Force -Option AllScope
+function Git-Merge-NFF { & git merge --no-ff }
+New-Alias -Name gmnff -Value Git-Merge-NFF -Force -Option AllScope
+function Git-Diff { & git diff $args }
+New-Alias -Name gd -Value Git-Diff -Force -Option AllScope
+function Git-Diff-Cached { & git diff --cached $args }
+New-Alias -Name gdc -Value Git-Diff-Cached -Force -Option AllScope
+function Git-Log4 { & git log -n 4 $args }
+New-Alias -Name gl4 -Value Git-Log4 -Force -Option AllScope
+function Git-Fetch { & git fetch $args }
+New-Alias -Name gfetch -Value Git-Fetch -Force -Option AllScope
 
 # git pull current branch instead of all branches
-function Get-GitPull {
+function Git-Pull {
     $cur_head="$(git rev-parse --abbrev-ref HEAD)"
     & git pull origin ${cur_head}
 }
-New-Alias -Name gpull -Value Get-GitPull -Force -Option AllScope
+New-Alias -Name gpull -Value Git-Pull -Force -Option AllScope
 
 # git push current branch instead of all branches
-function Get-GitPush {
+function Git-Push {
     $cur_head="$(git rev-parse --abbrev-ref HEAD)"
     & git push origin ${cur_head}
 }
-New-Alias -Name gpush -Value Get-GitPush -Force -Option AllScope
+New-Alias -Name gpush -Value Git-Push -Force -Option AllScope
 
 function gg($String) {
   # auto exclude files in .git and .gitignore, search for both tracked and untracked files
