@@ -31,6 +31,7 @@ winget install Git.Git                                   --silent --accept-packa
 winget install OpenJS.NodeJS                             --silent --accept-package-agreements
 winget install Python.Python.3                           --silent --accept-package-agreements
 winget install -e --id RubyInstallerTeam.Ruby.3.1        --silent --accept-package-agreements
+winget install -e --id Casey.Just                        --silent --accept-package-agreements
 
 # browsers
 winget install Google.Chrome                             --silent --accept-package-agreements

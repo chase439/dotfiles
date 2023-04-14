@@ -59,8 +59,13 @@ function gg2($String) {
     };
 };
 
+# similar to 'type' in linux
 function get-definition($String) {
   (Get-Command $String).Definition ;
+};
+
+function psversion {
+  $PSVersionTable.PSVersion ;
 };
 
 # gci cmdlet is alias for Get-ChildItem
