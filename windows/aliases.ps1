@@ -13,7 +13,8 @@ ${function:cdcpxage} = { Set-Location C:\git\One\CPX-AGE }
 ${function:cdcpxairgap} = { Set-Location C:\Users\chasetran\source\repos\CPX-Airgap }
 ${function:cdacr} = { Set-Location C:\AI-AzureCIP-Distribution }
 ${function:cdacrbuildout} = { Set-Location C:\AI-AzureCIP-Distribution\src\AI.DataDistribution\AzureConsumptionRevenue\AcrInfra_Bootstrap\Airgap_Infra_Deployment }
-${function:cddotfiles} = { Set-Location C:\Users\chasetran\source\repos\dotfiles }
+${function:cddotfiles} = { Set-Location C:\repos\dotfiles }
+${function:cdllm} = { Set-Location C:\repos\docs-llm}
 ${function:cddesktop} = { Set-Location ~\Desktop }
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)

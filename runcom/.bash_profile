@@ -24,6 +24,7 @@ files+=("$DOTFILES_PATH/system/.prompt")
 # files+=("$DOTFILES_PATH/runcom/common/.bash_aws")
 
 # Project specific
+files+=("$DOTFILES_PATH/runcom/projects_specific/.bash_llm")
 files+=("$DOTFILES_PATH/runcom/projects_specific/.bash_ac")
 files+=("$DOTFILES_PATH/runcom/projects_specific/.bash_bluestar")
 
@@ -48,4 +49,4 @@ done
 print_files() { printf '%s\n' "${files[@]}" ; }
 
 # cdblops # default to folder
-cddemo # default to folder
+# cddemo # default to folder
