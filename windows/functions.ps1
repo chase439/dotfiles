@@ -50,13 +50,16 @@ function gg($String) {
   # auto exclude files in .git and .gitignore, search for both tracked and untracked files
   git grep --ignore-case --untracked $String './*' ':(exclude).vim/' ':(exclude)runcom/.gitk' ':(exclude).vscode/extensions' ;
 }
-# If currently in a git repo, then use git grep since it's faster, otherwise use powershell commands
 function gg2($String) {
-    if (git rev-parse --is-inside-work-tree 2> $null) {
-        git grep --ignore-case --name-only --untracked $String | % { Join-Path $pwd.Path ($_ -Replace '\/','\') | Get-Item; };
-    } else {
-        gci -Recurse -File -Path * -Exclude @('*.pdf','*.exe','*.dll','','','') | ? { $_ | sls $string -Quiet; };
-    };
+  gci -Recurse -File -Path * -Exclude @('*.pdf','*.exe','*.dll','','','') | ? { $_ | sls $string -Quiet; };
+};
+# If currently in a git repo, then use git grep since it's faster, otherwise use powershell commands
+function gg3($String) {
+  if (git rev-parse --is-inside-work-tree 2> $null) {
+    git grep --ignore-case --name-only --untracked $String | % { Join-Path $pwd.Path ($_ -Replace '\/','\') | Get-Item; };
+  } else {
+    gg2($String);
+  };
 };
 
 # similar to 'type' in linux

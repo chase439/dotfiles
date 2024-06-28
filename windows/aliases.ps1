@@ -9,12 +9,15 @@ ${function:.....} = { Set-Location ..\..\..\.. }
 ${function:......} = { Set-Location ..\..\..\..\.. }
 
 # Navigation Shortcuts
-${function:cdcpxage} = { Set-Location C:\git\One\CPX-AGE }
-${function:cdcpxairgap} = { Set-Location C:\Users\chasetran\source\repos\CPX-Airgap }
-${function:cdacr} = { Set-Location C:\AI-AzureCIP-Distribution }
-${function:cdacrbuildout} = { Set-Location C:\AI-AzureCIP-Distribution\src\AI.DataDistribution\AzureConsumptionRevenue\AcrInfra_Bootstrap\Airgap_Infra_Deployment }
-${function:cddotfiles} = { Set-Location C:\Users\chasetran\source\repos\dotfiles }
+${function:cdcpxage} = { Set-Location C:\repos\CPX-AGE }
+${function:cdcpxairgap} = { Set-Location C:\\repos\CPX-Airgap }
+${function:cdzt} = { Set-Location C:\repos\CPX-AGE-Zero-Touch }
+${function:cdacr} = { Set-Location C:\repos\AI-AzureCIP-Distribution }
+${function:cdacrbuildout} = { Set-Location C:\repos\AI-AzureCIP-Distribution\src\AI.DataDistribution\AzureConsumptionRevenue\AcrInfra_Bootstrap\Airgap_Infra_Deployment }
+${function:cdacrtest} = { Set-Location C:\repos\AI-AzureCIP-Distribution\src\AI.DataDistribution\AzureConsumptionRevenue\Test\FunctionalValidation }
+${function:cddotfiles} = { Set-Location C:\repos\dotfiles }
 ${function:cddesktop} = { Set-Location ~\Desktop }
+${function:cdlockbox1} = { Set-Location C:\repos\Azure.Commercial.LockBox\.zerotouch }
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # Directory Listing: Use `ls.exe` if available
