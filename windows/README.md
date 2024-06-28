@@ -6,10 +6,11 @@ Installation
 ===================
   1. First, backup any dotfiles in your $HOME (e.g. ~/.bashrc, ~/.gitconfig, ~/.vimrc).
   1. Clone dotfiles repo to your directory
-  1. Run PowerShell as admin, cd into the dotfiles project
+  1. Run PowerShell as admin
+  1. `cd dotfiles\windows`
   1. Run `.\symlink.ps1`
-  1. Copy dotfiles\runcom\.vimrc to $HOME
-  1. Copy dotfiles\.vim\* into $HOME\vimfiles (instead of ~/.vim for Linux)
+  1. Copy `dotfiles\runcom\.vimrc` to `$HOME`
+  1. Copy `dotfiles\.vim\*` into `$HOME\vimfiles` (instead of ~/.vim for Linux)
 
 UnInstallation
 ===================
