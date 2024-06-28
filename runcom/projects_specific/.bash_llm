@@ -1,0 +1,3 @@
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+alias cdllm='cd ~/repos/docs-llm'

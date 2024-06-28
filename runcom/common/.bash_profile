@@ -159,6 +159,7 @@ save-dir() {
     source $DIRS_PATH ;
   fi
 }
+alias cddotfiles="cd $DOTFILES_PATH"
 
 # ------------------------------
 # PS1 Prompt Format
