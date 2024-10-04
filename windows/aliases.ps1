@@ -17,7 +17,12 @@ ${function:cdacrbuildout} = { Set-Location C:\repos\AI-AzureCIP-Distribution\src
 ${function:cdacrtest} = { Set-Location C:\repos\AI-AzureCIP-Distribution\src\AI.DataDistribution\AzureConsumptionRevenue\Test\FunctionalValidation }
 ${function:cddotfiles} = { Set-Location C:\repos\dotfiles }
 ${function:cddesktop} = { Set-Location ~\Desktop }
+${function:cdcst} = { Set-Location C:\repos\Azure.CST.PlatformServices\.zerotouch }
 ${function:cdlockbox1} = { Set-Location C:\repos\Azure.Commercial.LockBox\.zerotouch }
+${function:cduam} = { Set-Location C:\repos\Azure.CST.UserManagement\.zerotouch }
+${function:cdaudit} = { Set-Location C:\repos\Azure.CST.AuditServices\.zerotouch }
+${function:cdfcm} = { Set-Location C:\repos\Azure.CST.FeatureControlManager\.zerotouch }
+${function:cdsaf} = { Set-Location C:\repos\MSEG.CE.Library.SkylightActionFramework\.zerotouch }
 
 # Correct PowerShell Aliases if tools are available (aliases win if set)
 # Directory Listing: Use `ls.exe` if available
