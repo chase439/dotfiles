@@ -44,7 +44,8 @@ winget install Google.Chrome                             --silent --accept-packa
 #winget install Microsoft.SQLServerManagementStudio       --silent --accept-package-agreements
 #winget install Microsoft.VisualStudio.2022.Professional  --silent --accept-package-agreements --override "--wait --quiet --norestart --nocache --addProductLang En-us --add Microsoft.VisualStudio.Workload.Azure --add Microsoft.VisualStudio.Workload.NetWeb"
 #winget install JetBrains.dotUltimate                     --silent --accept-package-agreements --override "/SpecificProductNames=ReSharper;dotTrace;dotCover /Silent=True /VsVersion=17.0"
-winget install Vim.Vim                                   --silent --accept-package-agreements
+winget install Vim.Vim                                    --silent --accept-package-agreements
+winget install fzf                                        --silent --accept-package-agreements  # vim plugin, which fzf to find location
 #winget install WinMerge.WinMerge                         --silent --accept-package-agreements
 #winget install Microsoft.AzureCLI                        --silent --accept-package-agreements
 winget install Microsoft.AzureStorageExplorer            --silent --accept-package-agreements

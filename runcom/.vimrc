@@ -11,7 +11,7 @@ endif
 
 " Vim-Plug - similar to pathogen, another plugin manager
 " Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 " update &runtimepath and initialize plugin system
@@ -205,8 +205,11 @@ endfunction
 
 " CtrlP Plugin
 " more info in ctrlp readme.md
-map ,t <c-p>
-map <leader>p :CtrlPCurWD<cr>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+"map ,t <c-p>
+"map <leader>p :CtrlPCurWD<cr>
 let g:ctrlp_show_hidden=1  " show dotfiles and not .git/
 if executable('ag')
   " if ag command exists, fuzzy find files super fast using the silver surfer ag command

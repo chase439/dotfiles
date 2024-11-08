@@ -9,7 +9,6 @@
 
 # .\dependencies.ps1  # Dependencies: Tools, Utilities, and Packages
 
-
 # source existing files
 Push-Location (Split-Path -parent (Get-Item $PROFILE).Target)
 "components","functions","aliases","exports","extra" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
