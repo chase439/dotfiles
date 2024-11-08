@@ -22,10 +22,10 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni $HOME/vimfiles/autoload/plug.vim -Force
 
 # Install vim ctrlp plugin, https://github.com/ctrlpvim/ctrlp.vim
-$ctrlpPath = "$HOME/.vim/pack/plugins/start/ctrlp"
+$ctrlpPath = "$HOME/.vim/bundle/ctrlp.vim"
 if (Test-Path $ctrlpPath) {
     Write-Host "Vim's ctrlp plugin already exists, skipping."
 } else {
-    mkdir -p $HOME/.vim/pack/plugins/start -Force
-    git clone --depth=1 https://github.com/ctrlpvim/ctrlp.vim.git "$ctrlpPath"
+    mkdir -p $ctrlpPath -Force
+    git clone https://github.com/ctrlpvim/ctrlp.vim.git $ctrlpPath
 }

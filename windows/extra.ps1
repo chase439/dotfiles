@@ -5,3 +5,6 @@ git config --global user.name $env:GIT_AUTHOR_NAME
 Set-Environment "GIT_AUTHOR_EMAIL" "chasetran@microsoft.com"
 Set-Environment "GIT_COMMITTER_EMAIL" $env:GIT_AUTHOR_EMAIL
 git config --global user.email $env:GIT_AUTHOR_EMAIL
+
+# add gvim PATH
+Append-EnvPathIfExists "C:\Program Files\Vim\vim91"
