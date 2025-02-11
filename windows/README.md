@@ -12,4 +12,5 @@ Installation
 UnInstallation
 ===================
   1. Remove $PROFILE symlink
+  1. Remove C:\nuget.config
   1. Remove certain files in $HOME\vimfiles

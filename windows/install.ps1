@@ -8,6 +8,8 @@ Read-Host -Prompt "Press any key to continue"
 Copy-Item -Path $env:DOTFILES_PATH\runcom\.vimrc -Destination $HOME\.vimrc
 # Copy .vim files to $HOME\vimfiles for windows (instead of ~/.vim for Linux)
 Copy-Item -Path $env:DOTFILES_PATH\.vim\* -Destination $HOME\vimfiles -Recurse -Force
+# nuget.config file can be found at multiple places, typically the closest to the command pwd is used.
+# default is at %appdata%\NuGet\, but in my case it's at C:\nuget.config
 
 #########################
 # create a symlink to a location where PowerShell sources its profiles
@@ -16,6 +18,10 @@ Copy-Item -Path $env:DOTFILES_PATH\.vim\* -Destination $HOME\vimfiles -Recurse -
 New-Item -Path $PROFILE -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1").FullName -Force
 # this PS profile loads a bunch of other PS scripts
 #########################
+
+# nuget.config file can be found at multiple places, typically the closest to the command pwd is used.
+# default is at %appdata%\NuGet\, but in my case it's at C:\nuget.config
+New-Item -Path "C:\nuget.config" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\nuget.config").FullName -Force
 
 # Install vim plug here as it's not available in winget repo
 iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
