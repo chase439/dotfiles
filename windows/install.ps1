@@ -23,6 +23,8 @@ New-Item -Path $PROFILE -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\M
 # default is at %appdata%\NuGet\, but in my case it's at C:\nuget.config
 New-Item -Path "C:\nuget.config" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\nuget.config").FullName -Force
 
+New-Item -Path "~\.gitconfig" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitconfig").FullName -Force
+
 # Install vim plug here as it's not available in winget repo
 iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni $HOME/vimfiles/autoload/plug.vim -Force
