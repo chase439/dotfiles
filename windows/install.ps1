@@ -43,6 +43,8 @@ Write-Host "Done."
 winget install -e --id Microsoft.VisualStudioCode.Insiders
 winget install -e --id Notepad++.Notepad++
 winget install -e --id GitHub.GitHubDesktop
+## winget install -e --id GitHub.cli	## for auth and caching credentials, use command: gh auth login
+## winget install -e --id Microsoft.GitCredentialManagerCore ## already installed with latest Git for Windows
 
 # Install gVim
 winget install -e --id vim.vim
