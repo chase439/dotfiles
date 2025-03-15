@@ -1,6 +1,7 @@
 # Set DOTFILES_PATH env variable to PSScriptRoot's parent path
 $env:DOTFILES_PATH=(Split-Path -parent $PSScriptRoot)
 
+Write-Output "Ensure you're running this script as admin."
 Write-Output "DOTFILES_PATH: $env:DOTFILES_PATH"
 Read-Host -Prompt "Press any key to continue"
 
@@ -27,6 +28,24 @@ New-Item -Path "~\.gitconfig" -ItemType SymbolicLink -Value (Get-Item "$PSScript
 
 Copy-Item -Path $env:DOTFILES_PATH\.git\config -Destination $env:DOTFILES_PATH\.git\config_backup
 New-Item -Path $env:DOTFILES_PATH\.git\config -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitconfig_local").FullName -Force
+
+
+# Install stable release of NuGet and WinGet
+# WinGet is a package manager for Windows, similar to apt-get or brew
+$progressPreference = 'silentlyContinue'
+Write-Host "Installing WinGet PowerShell module from PSGallery..."
+Install-PackageProvider -Name NuGet -Force | Out-Null
+Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery | Out-Null
+Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
+Repair-WinGetPackageManager
+Write-Host "Done."
+
+winget install -e --id Microsoft.VisualStudioCode.Insiders
+winget install -e --id Notepad++.Notepad++
+winget install -e --id GitHub.GitHubDesktop
+
+# Install gVim
+winget install -e --id vim.vim
 
 # Install vim plug here as it's not available in winget repo
 iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`

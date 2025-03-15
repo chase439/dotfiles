@@ -1,6 +1,6 @@
 [user]
 	name = Chase Tran
-	email = chasetran@microsoft.com
+	email = chasetran+microsoft@microsoft.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
