@@ -29,6 +29,9 @@ New-Item -Path "~\.gitconfig" -ItemType SymbolicLink -Value (Get-Item "$PSScript
 Copy-Item -Path $env:DOTFILES_PATH\.git\config -Destination $env:DOTFILES_PATH\.git\config_backup
 New-Item -Path $env:DOTFILES_PATH\.git\config -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitconfig_local").FullName -Force
 
+# Restore Windows "Quick Access" settings
+$quick_access_script = Join-Path $PSScriptRoot "quick_access" "restore_settings.ps1"
+& $quick_access_script
 
 # Install stable release of NuGet and WinGet
 # WinGet is a package manager for Windows, similar to apt-get or brew
@@ -39,6 +42,7 @@ Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery | Out-
 Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
 Repair-WinGetPackageManager
 Write-Host "Done."
+
 
 winget install -e --id Microsoft.PowerShell # latest PowerShell
 winget install -e --id Git.Git # install Git for Windows with Git SCM
@@ -92,7 +96,7 @@ if (Test-Path $chocoPath) {
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
 
-$npp_script = Join-Path $PSScriptRoot "restore_notepadpp_settings.ps1"
+$npp_script = Join-Path $PSScriptRoot "notepadpp_restore_settings.ps1"
 & $npp_script
 
 Write-Host
