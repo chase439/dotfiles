@@ -40,11 +40,26 @@ Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
 Repair-WinGetPackageManager
 Write-Host "Done."
 
+winget install -e --id Microsoft.PowerShell # latest PowerShell
+winget install -e --id Git.Git # install Git for Windows with Git SCM
 winget install -e --id Microsoft.VisualStudioCode.Insiders
+winget install -e --id Microsoft.VisualStudio.2022.Community # newer version available in Microsoft Store
 winget install -e --id Notepad++.Notepad++
 winget install -e --id GitHub.GitHubDesktop
-## winget install -e --id GitHub.cli	## for auth and caching credentials, use command: gh auth login
-## winget install -e --id Microsoft.GitCredentialManagerCore ## already installed with latest Git for Windows
+# winget install -e --id GitHub.cli	## for auth and caching credentials, use command: gh auth login
+# winget install -e --id Microsoft.GitCredentialManagerCore ## already installed with latest Git for Windows
+winget install -e --id 7zip.7zip
+winget install -e --id GIMP.GIMP
+winget install -e --id Google.Chrome
+winget install -e --id Logitech.GHUB
+winget install -e --id Microsoft.SQLServerManagementStudio
+winget install -e --id Microsoft.AzureStorageExplorer
+winget install -e --id Microsoft.AzureCLI
+winget install -e --id Yubico.YubikeyManager
+winget install -e --id TheOSCARTeam.OSCAR # for CPAP
+winget install -e --id splode.pomotroid # Pomodoro timer
+winget install -e --id Zoom.Zoom
+winget install fzf # fzf for vim
 
 # Install gVim
 winget install -e --id vim.vim
@@ -61,3 +76,32 @@ if (Test-Path $ctrlpPath) {
     mkdir -p $ctrlpPath -Force
     git clone https://github.com/ctrlpvim/ctrlp.vim.git $ctrlpPath
 }
+
+# Install chocolatey
+# Chocolatey is a package manager for Windows, similar to apt-get or brew or winget
+# if chocolatey is already installed, skip the installation
+$chocoPath = "C:\ProgramData\chocolatey"
+if (Test-Path $chocoPath) {
+    Write-Host "Chocolatey is already installed, skipping."
+} else {
+    Write-Host "Installing Chocolatey..."
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+}
+
+$npp_script = Join-Path $PSScriptRoot "restore_notepadpp_settings.ps1"
+& $npp_script
+
+Write-Host "--------------------------------------------------------------"
+Write-Host "Next Steps:"
+Write-Host "  Use the built-in VS Code Settings Sync functionality in VS Code to sync settings, keybindings, snippets, and extensions across devices"
+Write-Host "  https://code.visualstudio.com/docs/editor/settings-sync"
+Write-Host
+Write-Host "Install Brother printer tools"
+Write-Host "https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll2350dw_us_eu_as"
+Write-Host
+Write-Host "Use 'Company Portal' app to install Microsoft Smart Card Manager"
+Write-Host
+Write-Host "Change Teams settings (Appearance > Theme > Dark; Devices > Camera). No way to automate this yet."
+Write-Host
+Write-Host "--------------------------------------------------------------"
+

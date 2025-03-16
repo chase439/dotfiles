@@ -10,11 +10,9 @@ if exists("*pathogen#infect")
 endif
 
 " Vim-Plug - similar to pathogen, another plugin manager
-" Specify a directory for plugins
 call plug#begin()
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" update &runtimepath and initialize plugin system
 call plug#end()
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -231,4 +229,3 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " capital O to expand all folders, X to collapse all
 " r to refresh current directory
 " ? to toggle NerdTree Help page
-
