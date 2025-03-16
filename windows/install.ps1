@@ -5,12 +5,13 @@ Write-Output "Ensure you're running this script as admin."
 Write-Output "DOTFILES_PATH: $env:DOTFILES_PATH"
 Read-Host -Prompt "Press any key to continue"
 
-# Copy Files
-Copy-Item -Path $env:DOTFILES_PATH\runcom\.vimrc -Destination $HOME\.vimrc
+# Link .vimrc
+New-Item -Path $HOME\.vimrc -ItemType SymbolicLink -Value (Get-Item "$env:DOTFILES_PATH\runcom\.vimrc").FullName -Force
+
 # Copy .vim files to $HOME\vimfiles for windows (instead of ~/.vim for Linux)
 Copy-Item -Path $env:DOTFILES_PATH\.vim\* -Destination $HOME\vimfiles -Recurse -Force
-# nuget.config file can be found at multiple places, typically the closest to the command pwd is used.
-# default is at %appdata%\NuGet\, but in my case it's at C:\nuget.config
+# Don't want to symlink the .vim directory as I don't want new files to be created in this directory
+# New-Item -Path $HOME\vimfiles -ItemType SymbolicLink -Value (Get-Item "$env:DOTFILES_PATH\.vim").FullName -Force
 
 #########################
 # create a symlink to a location where PowerShell sources its profiles

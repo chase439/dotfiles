@@ -20,16 +20,27 @@ if (Test-Path -Path $backup_dir -PathType Container) {
     Copy-Item -Path "$npp_dir\*" -Destination $backup_dir -Recurse -Force
 }
 
-# Copy the configuration files
+# Link the configuration files
 $source_files = Get-ChildItem -Path "$my_notepadpp_dir\*" -File
 foreach ($file in $source_files) {
-    Copy-Item -Path $file.FullName -Destination $npp_dir -Force
+
+    Write-Host "Linking $npp_dir\$($file.Name)"
+    # create the symbolic link for the file
+    New-Item -Path "$npp_dir\$($file.Name)" -ItemType SymbolicLink -Value $file -Force
 }
 
-#Copy plugin folders
+# Link plugin folders
 $source_folders = Get-ChildItem -Path "$my_notepadpp_dir\*" -Directory
 foreach($folder in $source_folders){
-    Copy-Item -Path $folder.FullName -Destination $npp_dir -Recurse -Force
+    $dest_folder = Join-Path $npp_dir $folder.Name
+    if (Test-Path -Path $dest_folder -PathType Container) {
+        Write-Host "`nRemoving existing folder: $dest_folder"
+        Remove-Item -Path $dest_folder -Recurse -Force
+    }
+
+    Write-Host "Linking $dest_folder"
+    # Create the symbolic link for the folder
+    New-Item -Path $dest_folder -ItemType SymbolicLink -Value $folder -Force
 }
 
-Write-Host "Notepad++ settings restored."
+Write-Host "`nNotepad++ settings restored."
