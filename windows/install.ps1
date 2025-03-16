@@ -64,9 +64,13 @@ winget install fzf # fzf for vim
 # Install gVim
 winget install -e --id vim.vim
 
-# Install vim plug here as it's not available in winget repo
+# Install vim plug for Windows as it's not available in winget repo
 iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni $HOME/vimfiles/autoload/plug.vim -Force
+
+# Install vim plug for Unix as it's used by git bash (git commit --amend)
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni $HOME/.vim/autoload/plug.vim -Force
 
 # Install vim ctrlp plugin, https://github.com/ctrlpvim/ctrlp.vim
 $ctrlpPath = "$HOME/.vim/bundle/ctrlp.vim"
@@ -91,17 +95,18 @@ if (Test-Path $chocoPath) {
 $npp_script = Join-Path $PSScriptRoot "restore_notepadpp_settings.ps1"
 & $npp_script
 
+Write-Host
+Write-Host
 Write-Host "--------------------------------------------------------------"
 Write-Host "Next Steps:"
 Write-Host "  Use the built-in VS Code Settings Sync functionality in VS Code to sync settings, keybindings, snippets, and extensions across devices"
-Write-Host "  https://code.visualstudio.com/docs/editor/settings-sync"
+Write-Host "    https://code.visualstudio.com/docs/editor/settings-sync"
 Write-Host
-Write-Host "Install Brother printer tools"
-Write-Host "https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll2350dw_us_eu_as"
+Write-Host "  Install Brother printer tools"
+Write-Host "    https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll2350dw_us_eu_as"
 Write-Host
-Write-Host "Use 'Company Portal' app to install Microsoft Smart Card Manager"
+Write-Host "  Use 'Company Portal' app to install Microsoft Smart Card Manager"
 Write-Host
-Write-Host "Change Teams settings (Appearance > Theme > Dark; Devices > Camera). No way to automate this yet."
-Write-Host
+Write-Host "  Change Teams settings (Appearance > Theme > Dark; Devices > Camera). No way to automate this yet."
 Write-Host "--------------------------------------------------------------"
 
