@@ -103,9 +103,10 @@ $npp_script = Join-Path $PSScriptRoot "notepadpp_restore_settings.ps1"
 Write-Host
 Write-Host
 Write-Host "--------------------------------------------------------------"
-Write-Host "Next Steps:"
+Write-Host "Next (Manual) Steps:"
 Write-Host "  Use the built-in VS Code Settings Sync functionality in VS Code to sync settings, keybindings, snippets, and extensions across devices"
 Write-Host "    https://code.visualstudio.com/docs/editor/settings-sync"
+Write-Host "    VS Code > Settings Sync > Turn on"
 Write-Host
 Write-Host "  Install Brother printer tools"
 Write-Host "    https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll2350dw_us_eu_as"
@@ -113,5 +114,7 @@ Write-Host
 Write-Host "  Use 'Company Portal' app to install Microsoft Smart Card Manager"
 Write-Host
 Write-Host "  Change Teams settings (Appearance > Theme > Dark; Devices > Camera). No way to automate this yet."
+Write-Host
+Write-Host "  For Windows personalization, change the colors that appear in Windows and your apps to Dark."
+Write-Host "  Change Windows Settings > Personalization (Theme > Dark; Color > Dark). Automation doesn't work well."
 Write-Host "--------------------------------------------------------------"
-

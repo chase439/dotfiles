@@ -1,4 +1,4 @@
-Write-Host "Restoring Quick Access settings..."
+Write-Host "`n--- Restoring Quick Access settings..."
 
 $sourceFile = "$PSScriptRoot\f01b4d95cf55d32a.automaticDestinations-ms"
 $destinationFile = "$env:AppData\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms"

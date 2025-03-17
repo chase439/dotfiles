@@ -1,4 +1,4 @@
-Write-Host "Restoring Notepad++ settings..."
+Write-Host "`n--- Restoring Notepad++ settings..."
 
 # Get the AppData path
 $appdata = $env:AppData
@@ -43,4 +43,4 @@ foreach($folder in $source_folders){
     New-Item -Path $dest_folder -ItemType SymbolicLink -Value $folder -Force
 }
 
-Write-Host "`nNotepad++ settings restored."
+Write-Host "`n--- Notepad++ settings restored."
