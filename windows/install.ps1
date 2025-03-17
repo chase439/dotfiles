@@ -31,19 +31,32 @@ Copy-Item -Path $env:DOTFILES_PATH\.git\config -Destination $env:DOTFILES_PATH\.
 New-Item -Path $env:DOTFILES_PATH\.git\config -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitconfig_local").FullName -Force
 
 # Restore Windows "Quick Access" settings
-$quick_access_script = Join-Path $PSScriptRoot "quick_access" "restore_settings.ps1"
+$quick_access_script = Join-Path $PSScriptRoot "quick_access\restore_settings.ps1"
 & $quick_access_script
 
-# Install stable release of NuGet and WinGet
-# WinGet is a package manager for Windows, similar to apt-get or brew
-$progressPreference = 'silentlyContinue'
-Write-Host "Installing WinGet PowerShell module from PSGallery..."
-Install-PackageProvider -Name NuGet -Force | Out-Null
-Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery | Out-Null
-Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
-Repair-WinGetPackageManager
-Write-Host "Done."
+# if nuget is already installed, skip the installation
+$nugetPath = "C:\Program Files\PackageManagement\ProviderAssemblies\nuget"
+if (Test-Path $nugetPath) {
+    Write-Host "NuGet is already installed, skipping."
+} else {
+    Write-Host "Installing NuGet PowerShell module from PSGallery..."
+    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser | Out-Null
+    Write-Host "Done."
+}
 
+# Install WinGet, which is a package manager for Windows, similar to apt-get or brew
+# if WinGet is already installed, skip the installation
+$wingetPath = "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*\winget.exe"
+if (Test-Path $wingetPath) {
+    Write-Host "WinGet is already installed, skipping."
+} else {
+    $progressPreference = 'silentlyContinue'
+    Write-Host "Installing WinGet PowerShell module from PSGallery..."
+    Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery | Out-Null
+    Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
+    Repair-WinGetPackageManager
+    Write-Host "Done."
+}
 
 winget install -e --id Microsoft.PowerShell # latest PowerShell
 winget install -e --id Git.Git # install Git for Windows with Git SCM
