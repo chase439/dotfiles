@@ -13,13 +13,13 @@ Copy-Item -Path $env:DOTFILES_PATH\.vim\* -Destination $HOME\vimfiles -Recurse -
 # Don't want to symlink the .vim directory as I don't want new files to be created in this directory
 # New-Item -Path $HOME\vimfiles -ItemType SymbolicLink -Value (Get-Item "$env:DOTFILES_PATH\.vim").FullName -Force
 
-#########################
-# create a symlink to a location where PowerShell sources its profiles
 # WARN: each PowerShell version/type may have a different $PROFILE location. Best to run this on each PS type as admin.
-# SymbolicLink requires admin privileges, Junction doesn't but it only links directory
-New-Item -Path $PROFILE -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1").FullName -Force
-# this PS profile loads a bunch of other PS scripts
-#########################
+# PowerShell 7 intentionally uses a different profile location than Windows PowerShell 5.1 to avoid conflicts.
+$source_ps_profile = (Get-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1").FullName
+$dest_ps5_profile = "$HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+$dest_ps7_profile = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+New-Item -Path $dest_ps5_profile -ItemType SymbolicLink -Value $source_ps_profile -Force
+New-Item -Path $dest_ps7_profile -ItemType SymbolicLink -Value $source_ps_profile -Force
 
 # nuget.config file can be found at multiple places, typically the closest to the command pwd is used.
 # default is at %appdata%\NuGet\, but in my case it's at C:\nuget.config
