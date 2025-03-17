@@ -26,6 +26,7 @@ New-Item -Path $dest_ps7_profile -ItemType SymbolicLink -Value $source_ps_profil
 New-Item -Path "C:\nuget.config" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\nuget.config").FullName -Force
 
 New-Item -Path "~\.gitconfig" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitconfig_global").FullName -Force
+New-Item -Path "~\.gitignore_global" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitignore_global").FullName -Force
 
 Copy-Item -Path $env:DOTFILES_PATH\.git\config -Destination $env:DOTFILES_PATH\.git\config_backup
 New-Item -Path $env:DOTFILES_PATH\.git\config -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitconfig_local").FullName -Force
