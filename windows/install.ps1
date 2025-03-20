@@ -61,8 +61,6 @@ if (Test-Path $wingetPath) {
 
 winget install -e --id Microsoft.PowerShell # latest PowerShell
 winget install -e --id Git.Git # install Git for Windows with Git SCM
-winget install -e --id Microsoft.VisualStudioCode.Insiders
-winget install -e --id Microsoft.VisualStudio.2022.Community # newer version available in Microsoft Store
 winget install -e --id Notepad++.Notepad++
 winget install -e --id GitHub.GitHubDesktop
 # winget install -e --id GitHub.cli	## for auth and caching credentials, use command: gh auth login
@@ -79,6 +77,38 @@ winget install -e --id TheOSCARTeam.OSCAR # for CPAP
 winget install -e --id splode.pomotroid # Pomodoro timer
 winget install -e --id Zoom.Zoom
 winget install fzf # fzf for vim
+
+# if VS Code Insider is already installed, skip the installation
+$vsCodeInsidersPath = "C:\Users\chasetran\AppData\Local\Programs\Microsoft VS Code Insiders"
+if (Test-Path $vsCodeInsidersPath) {
+    Write-Host "VS Code Insiders is already installed, skipping."
+} else {
+    Write-Host "Installing VS Code Insiders..."
+    winget install -e --id Microsoft.VisualStudioCode.Insiders
+}
+
+# if Visual Studio 2022 Community is already installed, skip the installation
+$vs2022Path = "C:\Program Files\Microsoft Visual Studio\2022\Community"
+if (Test-Path $vs2022Path) {
+    Write-Host "Visual Studio 2022 Community is already installed, skipping."
+} else {
+    Write-Host "Installing Visual Studio 2022 Community..."
+    winget install -e --id Microsoft.VisualStudio.2022.Community # newer version available in Microsoft Store
+}
+
+Write-Host "Installing NPM..."
+winget install -e --id OpenJS.NodeJS # latest Node.JS and NPM
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") # reload the environment variables to get npm in PATH
+npm install -g vsts-npm-auth # for Microsoft npm auth
+# if npmrc file already exists, skip the installation
+# copy instead of symlink as the file will contain sensitive information
+$npmrcPath = "$HOME\.npmrc"
+if (Test-Path $npmrcPath) {
+    Write-Host ".npmrc file already exists, skipping."
+} else {
+    Write-Host "Creating .npmrc file..."
+    Copy-Item -Path (Get-Item "$PSScriptRoot\.npmrc").FullName -Destination $npmrcPath
+}
 
 # Install gVim
 winget install -e --id vim.vim

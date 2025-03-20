@@ -10,6 +10,7 @@
         <File filename="C:\Program Files\Notepad++\change.log" />
         <File filename="C:\Users\chasetran\OneDrive - Microsoft\Documents\CVT\github-recovery-codes-chase439.txt" />
         <File filename="C:\Users\chasetran\.vscode-insiders\extensions\extensions.json" />
+        <File filename="C:\Users\chasetran\AppData\Roaming\Notepad++\config.xml" />
     </History>
     <ProjectPanels>
         <ProjectPanel id="0" workSpaceFile="" />
@@ -27,7 +28,7 @@
         <GUIConfig name="ScintillaViewsSplitter">vertical</GUIConfig>
         <GUIConfig name="UserDefineDlg" position="undocked">hide</GUIConfig>
         <GUIConfig name="TabSetting" replaceBySpace="no" size="4" backspaceUnindent="no" />
-        <GUIConfig name="AppPosition" x="819" y="146" width="1024" height="700" isMaximized="yes" />
+        <GUIConfig name="AppPosition" x="3050" y="247" width="1024" height="700" isMaximized="yes" />
         <GUIConfig name="FindWindowPosition" left="929" top="497" right="1631" bottom="939" isLessModeOn="no" />
         <GUIConfig name="FinderConfig" wrappedLines="no" purgeBeforeEverySearch="no" showOnlyOneEntryPerFoundLine="yes" />
         <GUIConfig name="noUpdate" intervalDays="15" nextUpdateDate="20250329">no</GUIConfig>
