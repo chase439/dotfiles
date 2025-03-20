@@ -161,4 +161,7 @@ Write-Host "  Change Teams settings (Appearance > Theme > Dark; Devices > Camera
 Write-Host
 Write-Host "  For Windows personalization, change the colors that appear in Windows and your apps to Dark."
 Write-Host "  Change Windows Settings > Personalization (Theme > Dark; Color > Dark). Automation doesn't work well."
+Write-Host
+Write-Host "  Add auth token to .npmrc
+Write-Host "    https://dev.azure.com/msazure/One/_artifacts/feed/cpx-age-zerotouch-Consumption/connect
 Write-Host "--------------------------------------------------------------"
