@@ -110,6 +110,17 @@ if (Test-Path $npmrcPath) {
     Copy-Item -Path (Get-Item "$PSScriptRoot\.npmrc").FullName -Destination $npmrcPath
 }
 
+<#
+$windows_terminal_settings = "C:\Users\chasetran\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+if (Test-Path $windows_terminal_settings) {
+    Write-Host "Windows Terminal Settings already exist, skipping."
+} else {
+    Write-Host "Installing Windows Terminal Settings..."
+    New-Item -Path $windows_terminal_settings -ItemType SymbolicLink -Value (Get-Item "$env:DOTFILES_PATH\windows\windows_terminal_settings.json").FullName -Force
+    winget install -e --id Microsoft.VisualStudioCode.Insiders
+}
+#>
+
 # Install gVim
 winget install -e --id vim.vim
 
@@ -162,6 +173,7 @@ Write-Host
 Write-Host "  For Windows personalization, change the colors that appear in Windows and your apps to Dark."
 Write-Host "  Change Windows Settings > Personalization (Theme > Dark; Color > Dark). Automation doesn't work well."
 Write-Host
-Write-Host "  Add auth token to .npmrc
-Write-Host "    https://dev.azure.com/msazure/One/_artifacts/feed/cpx-age-zerotouch-Consumption/connect
+Write-Host "  Add auth token to .npmrc"
+Write-Host "    https://dev.azure.com/msazure/One/_artifacts/feed/cpx-age-zerotouch-Consumption/connect"
+Write-Host "    https://microsoft.visualstudio.com/Universal%20Store/_artifacts/feed/ccp_ptt_availability/connect"
 Write-Host "--------------------------------------------------------------"
