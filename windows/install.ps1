@@ -66,6 +66,7 @@ winget install -e --id GitHub.GitHubDesktop
 # winget install -e --id GitHub.cli	## for auth and caching credentials, use command: gh auth login
 # winget install -e --id Microsoft.GitCredentialManagerCore ## already installed with latest Git for Windows
 winget install -e --id 7zip.7zip
+# winget install -e --id Adobe.Acrobat.Reader.64-bit
 winget install -e --id GIMP.GIMP
 winget install -e --id Google.Chrome
 winget install -e --id Logitech.GHUB
@@ -77,6 +78,8 @@ winget install -e --id TheOSCARTeam.OSCAR # for CPAP
 winget install -e --id splode.pomotroid # Pomodoro timer
 winget install -e --id Zoom.Zoom
 winget install fzf # fzf for vim
+winget install -e --id Python.Python.3.11
+winget install --id=astral-sh.uv -e # UV Python package manager, for creating mcp server
 
 # if VS Code Insider is already installed, skip the installation
 $vsCodeInsidersPath = "C:\Users\chasetran\AppData\Local\Programs\Microsoft VS Code Insiders"
@@ -155,6 +158,7 @@ if (Test-Path $chocoPath) {
 $npp_script = Join-Path $PSScriptRoot "notepadpp_restore_settings.ps1"
 & $npp_script
 
+
 Write-Host
 Write-Host
 Write-Host "--------------------------------------------------------------"
@@ -165,8 +169,10 @@ Write-Host "    VS Code > Settings Sync > Turn on"
 Write-Host
 Write-Host "  Install Brother printer tools"
 Write-Host "    https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll2350dw_us_eu_as"
+Write-Host "    https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=ds640_us_eu_as"
 Write-Host
 Write-Host "  Use 'Company Portal' app to install Microsoft Smart Card Manager"
+Write-Host "  Use 'Company Portal' app to install Adobe Creative Cloud Apps. Once installed, open App > Help > Sign in with browser > use Msft account. Then go to Apps menu > install Acrobat and Photoshop"
 Write-Host
 Write-Host "  Change Teams settings (Appearance > Theme > Dark; Devices > Camera). No way to automate this yet."
 Write-Host
@@ -176,4 +182,7 @@ Write-Host
 Write-Host "  Add auth token to .npmrc"
 Write-Host "    https://dev.azure.com/msazure/One/_artifacts/feed/cpx-age-zerotouch-Consumption/connect"
 Write-Host "    https://microsoft.visualstudio.com/Universal%20Store/_artifacts/feed/ccp_ptt_availability/connect"
+Write-Host
+Write-Host "  Install Github Copilot CLI
+Write-Host "    https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/installing-github-copilot-in-the-cli
 Write-Host "--------------------------------------------------------------"
