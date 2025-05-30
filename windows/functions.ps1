@@ -62,6 +62,10 @@ function gg3($String) {
   };
 };
 
+# function code($String) {
+#   code-insiders.cmd $String;
+# };
+
 # similar to 'type' in linux
 function get-definition($String) {
   (Get-Command $String).Definition ;

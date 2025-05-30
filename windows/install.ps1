@@ -35,16 +35,6 @@ New-Item -Path $env:DOTFILES_PATH\.git\config -ItemType SymbolicLink -Value (Get
 $quick_access_script = Join-Path $PSScriptRoot "quick_access\restore_settings.ps1"
 & $quick_access_script
 
-# if nuget is already installed, skip the installation
-$nugetPath = "C:\Program Files\PackageManagement\ProviderAssemblies\nuget"
-if (Test-Path $nugetPath) {
-    Write-Host "NuGet is already installed, skipping."
-} else {
-    Write-Host "Installing NuGet PowerShell module from PSGallery..."
-    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser | Out-Null
-    Write-Host "Done."
-}
-
 # Install WinGet, which is a package manager for Windows, similar to apt-get or brew
 # if WinGet is already installed, skip the installation
 $wingetPath = "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*\winget.exe"
@@ -63,6 +53,7 @@ winget install -e --id Microsoft.PowerShell # latest PowerShell
 winget install -e --id Git.Git # install Git for Windows with Git SCM
 winget install -e --id Notepad++.Notepad++
 winget install -e --id GitHub.GitHubDesktop
+winget install -e --id Microsoft.NuGet
 # winget install -e --id GitHub.cli	## for auth and caching credentials, use command: gh auth login
 # winget install -e --id Microsoft.GitCredentialManagerCore ## already installed with latest Git for Windows
 winget install -e --id 7zip.7zip
@@ -90,6 +81,15 @@ if (Test-Path $vsCodeInsidersPath) {
     winget install -e --id Microsoft.VisualStudioCode.Insiders
 }
 
+# if VS Code is already installed, skip the installation
+$vsCodesPath = "C:\Users\chasetran\AppData\Local\Programs\Microsoft VS Code"
+if (Test-Path $vsCodesPath) {
+    Write-Host "VS Code is already installed, skipping."
+} else {
+    Write-Host "Installing VS Code ..."
+    winget install -e --id Microsoft.VisualStudioCode
+}
+
 # if Visual Studio 2022 Community is already installed, skip the installation
 $vs2022Path = "C:\Program Files\Microsoft Visual Studio\2022\Community"
 if (Test-Path $vs2022Path) {
@@ -112,6 +112,8 @@ if (Test-Path $npmrcPath) {
     Write-Host "Creating .npmrc file..."
     Copy-Item -Path (Get-Item "$PSScriptRoot\.npmrc").FullName -Destination $npmrcPath
 }
+
+# I have some local executables stored at C:\Users\chasetran\.local\bin\
 
 <#
 $windows_terminal_settings = "C:\Users\chasetran\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
@@ -185,4 +187,10 @@ Write-Host "    https://microsoft.visualstudio.com/Universal%20Store/_artifacts/
 Write-Host
 Write-Host "  Install Github Copilot CLI
 Write-Host "    https://docs.github.com/en/copilot/managing-copilot/configure-personal-settings/installing-github-copilot-in-the-cli
+Write-Host
+Write-Host "  Install Kusto Explorer and Azure Storage Explorer desktop apps. Search online on how-to.
+Write-Host
+Write-Host "  Install Computer Dock firmware
+Write-Host "    https://support.lenovo.com/us/en/downloads/ds504448-firmware-update-tool-for-windows-7-10-32-bit-64-bit-thinkpad-hybrid-usb-c-with-usb-a-dock
+Write-Host
 Write-Host "--------------------------------------------------------------"
