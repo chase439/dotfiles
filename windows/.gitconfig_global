@@ -10,3 +10,15 @@
 	helper = manager
 [core]
 	excludesFile = ~/.gitignore_global
+	longpaths = true
+[credential "azrepos:org/msazure"]
+	username = chasetran@microsoft.com
+	azureAuthority = https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
+[credential "azrepos:org/CEPlanning"]
+	username = chasetran@microsoft.com
+[credential "azrepos:org/microsoft"]
+	username = chasetran@microsoft.com
+	azureAuthority = https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
+[alias]
+	pr = "!f() { exec az.cmd repos pr \"$@\"; }; f"
+	repo = "!f() { exec az.cmd repos \"$@\"; }; f"

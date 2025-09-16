@@ -23,6 +23,7 @@ New-Item -Path $dest_ps7_profile -ItemType SymbolicLink -Value $source_ps_profil
 
 # nuget.config file can be found at multiple places, typically the closest to the command pwd is used.
 # default is at %appdata%\NuGet\, but in my case it's at C:\nuget.config
+# user/password are not longer needed as azure-artifacts-credential-provider is now used
 New-Item -Path "C:\nuget.config" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\nuget.config").FullName -Force
 
 New-Item -Path "~\.gitconfig" -ItemType SymbolicLink -Value (Get-Item "$PSScriptRoot\.gitconfig_global").FullName -Force
@@ -191,6 +192,9 @@ Write-Host
 Write-Host "  Install Kusto Explorer and Azure Storage Explorer desktop apps. Search online on how-to.
 Write-Host
 Write-Host "  Install Computer Dock firmware
-Write-Host "    https://support.lenovo.com/us/en/downloads/ds504448-firmware-update-tool-for-windows-7-10-32-bit-64-bit-thinkpad-hybrid-usb-c-with-usb-a-dock
+Write-Host "    HP USB-C/A Universal Dock G2
+Write-Host "      https://support.hp.com/lv-en/drivers/hp-usb-c-a-universal-dock-g2/model/27767209
+Write-Host "    ThinkPad Hybrid USB-C with USB-A Dock - This dock is terrible, screens blackout often, don't use.
+Write-Host "      https://support.lenovo.com/us/en/downloads/ds504448-firmware-update-tool-for-windows-7-10-32-bit-64-bit-thinkpad-hybrid-usb-c-with-usb-a-dock
 Write-Host
 Write-Host "--------------------------------------------------------------"

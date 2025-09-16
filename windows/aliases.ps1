@@ -10,6 +10,7 @@ ${function:......} = { Set-Location ..\..\..\..\.. }
 
 # Navigation Shortcuts
 ${function:cdcpxage} = { Set-Location C:\repos\CPX-AGE }
+${function:cdscout} = { Set-Location C:\repos\CPX-Scout-Service }
 ${function:cdcpxairgap} = { Set-Location C:\\repos\CPX-Airgap }
 ${function:cdzt} = { Set-Location C:\repos\CPX-AGE-Zero-Touch }
 ${function:cdcmtl} = { Set-Location C:\repos\commercemesh-testlibrary }
