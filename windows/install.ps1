@@ -52,7 +52,7 @@ if (Test-Path $wingetPath) {
 
 winget install -e --id Microsoft.PowerShell # latest PowerShell
 winget install -e --id Git.Git # install Git for Windows with Git SCM
-winget install -e --id Notepad++.Notepad++
+# winget install -e --id Notepad++.Notepad++ # has vulnerabilities
 winget install -e --id GitHub.GitHubDesktop
 winget install -e --id Microsoft.NuGet
 # winget install -e --id GitHub.cli	## for auth and caching credentials, use command: gh auth login
