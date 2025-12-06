@@ -15,11 +15,14 @@ Copy-Item -Path $env:DOTFILES_PATH\.vim\* -Destination $HOME\vimfiles -Recurse -
 
 # WARN: each PowerShell version/type may have a different $PROFILE location. Best to run this on each PS type as admin.
 # PowerShell 7 intentionally uses a different profile location than Windows PowerShell 5.1 to avoid conflicts.
+# Here, we're installing for both PowerShell 5.1 and PowerShell 7
 $source_ps_profile = (Get-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1").FullName
-$dest_ps5_profile = "$HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-$dest_ps7_profile = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+$doc_level = Split-Path -Parent (Split-Path -Parent $PROFILE) # get document level of $PROFILE
+$dest_ps5_profile = "$doc_level\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+$dest_ps7_profile = "$doc_level\PowerShell\Microsoft.PowerShell_profile.ps1"
 New-Item -Path $dest_ps5_profile -ItemType SymbolicLink -Value $source_ps_profile -Force
 New-Item -Path $dest_ps7_profile -ItemType SymbolicLink -Value $source_ps_profile -Force
+# New-Item -Path $PROFILE -ItemType SymbolicLink -Value $source_ps_profile -Force
 
 # nuget.config file can be found at multiple places, typically the closest to the command pwd is used.
 # default is at %appdata%\NuGet\, but in my case it's at C:\nuget.config
