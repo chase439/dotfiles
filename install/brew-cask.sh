@@ -12,22 +12,19 @@ brew tap caskroom/fonts
 apps=(
   # alfred
   anki # app for https://ankiweb.net
-  atom # editor
   # dash2
   # dropbox
-  firefox
+  #firefox
   # flux
   # font-fira-code
   # glimmerblocker
-  google-backup-and-sync # Google Drive
   google-chrome
   # google-chrome-canary
   # hammerspoon
-  java # latest jdk
   # kaleidoscope
-  kindle
+  # kindle
   # macdown
-  macvim
+  # macvim
   # opera
   # screenflow # record Mac screen to create screencast videos
   # slack
@@ -36,7 +33,7 @@ apps=(
   # sublime-text
   # transmit
   tuxera-ntfs # read and write Windows NTFS
-  virtualbox
+  # virtualbox
   # visual-studio-code
   # vlc
 )
